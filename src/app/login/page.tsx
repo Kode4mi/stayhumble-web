@@ -15,7 +15,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-black">
       <div className="flex flex-col items-center justify-center flex-grow">
         <h1 className="text-5xl font-bold mb-2">
-          stay<span className="text-orange-500">Humble</span>
+          <span className="text-white">stay</span><span className="text-orange-500">Humble</span>
         </h1>
         <LoginForm
           onLogin={handleLogin}
