@@ -1,4 +1,3 @@
-// components/atoms/PostStats.tsx
 import React from 'react';
 
 interface PostStatsProps {

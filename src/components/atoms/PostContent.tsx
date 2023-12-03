@@ -1,4 +1,3 @@
-// components/atoms/PostContent.tsx
 import React from 'react';
 
 interface PostContentProps {

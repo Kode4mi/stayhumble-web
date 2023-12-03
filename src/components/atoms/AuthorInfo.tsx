@@ -1,4 +1,3 @@
-// components/atoms/AuthorInfo.tsx
 import React from 'react';
 
 interface AuthorInfoProps {

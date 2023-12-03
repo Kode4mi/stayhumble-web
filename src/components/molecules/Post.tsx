@@ -1,4 +1,3 @@
-// components/molecules/Post.tsx
 import React from 'react';
 import AuthorInfo from '../atoms/AuthorInfo';
 import PostContent from '../atoms/PostContent';
