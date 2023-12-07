@@ -11,7 +11,7 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin, username, onUsernameChange, password, onPasswordChange }) => {
   return (
     <div className="bg-white p-8 rounded-lg shadow-md w-96 mt-2">
-      <h1 className="text-3xl font-bold mb-6 text-center text-black">Witaj!</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center text-black">Zaloguj się</h1>
       <form className="space-y-6">
         <div className="flex flex-col">
           <label htmlFor="username" className="text-black">
@@ -29,6 +29,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, username, onUsernameChan
           <button type="button" className="w-5/6 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 transition-all" onClick={onLogin}>
             Zaloguj się
           </button>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+        <button className="w-fit text-orange-500 text-[0.75rem] hover:underline transition-all">Utwórz konto</button>
         </div>
       </form>
     </div>

@@ -35,7 +35,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black relative">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden">
       {stars.map((star, index) => (
         <div
           key={index}
@@ -47,26 +47,26 @@ export default function LoginPage() {
           }}
         ></div>
       ))}
-      <div className="flex flex-col items-center justify-center flex-grow">
-        <h1 className="text-5xl font-bold mb-2">
-          <span className="text-white">stay</span>
-          <span className="text-orange-500">Humble</span>
-        </h1>
-        <LoginForm
-          onLogin={handleLogin}
-          username={username}
-          onUsernameChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
-          password={password}
-          onPasswordChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-        />
+      <div className="flex flex-row items-center justify-center flex-grow text-white">
+        <div className="w-2/3 text-center">
+          <h1 className="text-8xl font-bold mb-2 ">
+            <span className="text-white">stay</span>
+            <span className="text-orange-500">Humble</span>
+          </h1>
+        </div>
+        <div className="flex flex-col">
+          <h1 className="text-6xl font-bold	">Najpokorniejsi ludzie na całym świecie</h1>
+          <h2 className="text-3xl mb-8 mt-12">Dołącz do nas.</h2>
+            <LoginForm
+              onLogin={handleLogin}
+              username={username}
+              onUsernameChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+              password={password}
+              onPasswordChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            />
+        </div>
       </div>
       <LoginFooter />
     </div>
   );
 }
-
-//witaj wyrzuc
-//pod zaloguj utwórz konto bez ramki pomarańczowy tekst
-//form w prawo
-//logo na lewo, powiększ i jakieś witaj na stayhumble
-//gwiazdki z tyłu
