@@ -26,6 +26,9 @@ const config: Config = {
       animation: {
         twinkle: "twinkle linear infinite",
       },
+      screens: {
+        'sm': '1050px',
+      },
     },
   },
   plugins: [],
