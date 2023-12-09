@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import LoginForm from "../../components/molecules/LoginForm";
+import SignInForm from "../../components/molecules/SignInForm";
 import LoginFooter from "@/components/atoms/LoginFooter";
 
 interface Star {
@@ -11,6 +11,8 @@ interface Star {
 
 export default function LoginPage() {
   const [username, setUsername] = useState<string>("");
+  const [fullName, setFullName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [stars, setStars] = useState<Star[]>([]);
 
@@ -30,8 +32,8 @@ export default function LoginPage() {
     generateStars();
   }, []);
 
-  const handleLogin = () => {
-    console.log("Logowanie:", username, password);
+  const handleSignIn = () => {
+    console.log("Rejestracja:", email, password, username, fullName);
   };
 
   return (
@@ -47,24 +49,22 @@ export default function LoginPage() {
           }}
         ></div>
       ))}
-      <div className="flex flex-row items-center justify-center flex-grow text-white">
-        <div className="w-2/3 text-center mr-24">
-          <h1 className="text-8xl font-bold mb-2">
-            <span className="text-white">stay</span>
-            <span className="text-orange-500">Humble</span>
-          </h1>
-          <h4 className="text-4xl px-12 mt-8 font-bold">Najpokorniejsi ludzie na całym świecie.</h4>
-          <h6 className="text-2xl mt-4">Dołącz do nas.</h6>
-        </div>
-        <div className="flex flex-col w-1/2">
-            <LoginForm
-              onLogin={handleLogin}
-              username={username}
-              onUsernameChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
-              password={password}
-              onPasswordChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-            />
-        </div>
+      <div className="flex flex-col items-center justify-center flex-grow">
+        <h1 className="text-5xl text-center font-bold mb-2">
+          <span className="text-white">stay</span>
+          <span className="text-orange-500">Humble</span>
+        </h1>
+        <SignInForm
+          onSignIn={handleSignIn}
+          email={email}
+          onEmailChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          fullName={fullName}
+          onNameChange={(e: React.ChangeEvent<HTMLInputElement>) => setFullName(e.target.value)}
+          username={username}
+          onUsernameChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+          password={password}
+          onPasswordChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+        />
       </div>
       <LoginFooter />
     </div>

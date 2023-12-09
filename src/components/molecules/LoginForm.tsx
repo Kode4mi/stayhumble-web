@@ -31,7 +31,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, username, onUsernameChan
           </button>
         </div>
         <div className="flex flex-col items-center justify-center">
-        <button className="w-fit text-orange-500 text-[0.75rem] hover:underline transition-all">Utwórz konto</button>
+        <button className="w-fit text-orange-500 text-[0.75rem] hover:underline transition-all"><a href="/signin">Utwórz konto</a></button>
         </div>
       </form>
     </div>
