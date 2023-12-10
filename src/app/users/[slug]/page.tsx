@@ -41,7 +41,7 @@ const UserPage = ({params}: {
         )
     }
 
-    const posts = exampleData[params.slug].posts.map(post => <div className="w-full h-60 bg-gray-500 rounded-3xl mb-2"></div>)
+    const posts = exampleData[params.slug].posts.map(() => <div className="w-full h-60 bg-gray-500 rounded-3xl mb-2"></div>)
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -71,7 +71,11 @@ const UserPage = ({params}: {
                 {
                     posts.length ?
                         <div className="p-2">
-                            {posts}
+                            {posts.map((post) => (
+                                <div>
+                                    {post}
+                                </div>
+                            ))}
                         </div>:
                         (
                             <div className="w-full h-full flex-1 flex justify-center items-center">
