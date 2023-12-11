@@ -46,9 +46,9 @@ const UserPage = ({params}: {
     return (
         <div className="flex flex-col min-h-screen">
             <div className="border-b border-gray-700 pb-4">
-                <div className="w-full bg-gray-900 h-60 relative mb-12">
+                <div className="w-full dark:bg-gray-900 bg-gray-300 h-60 relative mb-12">
                     {"Tło użytkownika"}
-                    <div className="h-40 w-40 border-2 border-black rounded-full bg-gray-900 absolute top-1/2 left-4 flex justify-center items-center">{"Zdjęcie profilowe"}</div>
+                    <div className="h-40 w-40 border-2 dark:border-black border-white rounded-full dark:bg-gray-900 bg-gray-300 absolute top-1/2 left-4 flex justify-center items-center">{"Zdjęcie profilowe"}</div>
                 </div>
                 <div className="pl-2 flex">
                     <div className="flex-1">
