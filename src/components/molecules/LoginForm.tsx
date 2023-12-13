@@ -10,7 +10,7 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin, username, onUsernameChange, password, onPasswordChange }) => {
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md w-96 mt-2">
+    <div className="bg-white p-8 rounded-lg shadow-md w-96 mt-2 z-50">
       <h1 className="text-3xl font-bold mb-6 text-center text-black">Zaloguj się</h1>
       <form className="space-y-6">
         <div className="flex flex-col">

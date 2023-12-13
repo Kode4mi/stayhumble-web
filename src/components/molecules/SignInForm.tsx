@@ -21,7 +21,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSignIn, email, fullName, user
           <label htmlFor="name" className="text-black">
             E-mail:
           </label>
-          <input type="text" className="border rounded p-2 text-black" value={email} onChange={onEmailChange} />
+          <input type="email" className="border rounded p-2 text-black" value={email} onChange={onEmailChange} />
         </div>
         <div className="flex flex-col">
           <label htmlFor="name" className="text-black">

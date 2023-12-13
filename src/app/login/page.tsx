@@ -35,11 +35,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-100 relative overflow-hidden dark:bg-black">
       {stars.map((star, index) => (
         <div
           key={index}
-          className="absolute bg-white w-[2px] h-[2px] rounded-[50%] animate-twinkle"
+          className="absolute bg-white w-[2px] h-[2px] rounded-[50%] animate-twinkle invisible dark:visible"
           style={{
             top: star.top,
             left: star.left,
@@ -50,15 +50,15 @@ export default function LoginPage() {
       <div className="flex flex-row items-center justify-center flex-grow text-white">
         <div className="w-0 text-center sm:w-2/3 sm:mr-24">
           <h1 className="text-8xl font-bold mb-2 hidden sm:block">
-            <span className="text-white">stay</span>
+            <span className="text-black dark:text-white">stay</span>
             <span className="text-orange-500">Humble</span>
           </h1>
-          <h4 className="text-4xl px-12 mt-8 font-bold hidden sm:block ">Najpokorniejsi ludzie na całym świecie.</h4>
-          <h6 className="text-2xl mt-4 hidden sm:block">Dołącz do nas.</h6>
+          <h4 className="text-4xl px-12 mt-8 font-bold hidden sm:block text-black dark:text-white">Najpokorniejsi ludzie na całym świecie.</h4>
+          <h6 className="text-2xl mt-4 hidden sm:block text-black dark:text-white">Dołącz do nas.</h6>
         </div>
         <div className="flex flex-col w-full sm:w-1/2">
           <h1 className="text-5xl text-center font-bold mb-2 block sm:hidden">
-            <span className="text-white">stay</span>
+            <span className="text-black dark:text-white">stay</span>
             <span className="text-orange-500">Humble</span>
           </h1>
           <LoginForm

@@ -37,11 +37,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-100 relative overflow-hidden dark:bg-black">
       {stars.map((star, index) => (
         <div
           key={index}
-          className="absolute bg-white w-[2px] h-[2px] rounded-[50%] animate-twinkle"
+          className="absolute bg-white w-[2px] h-[2px] rounded-[50%] animate-twinkle invisible dark:visible"
           style={{
             top: star.top,
             left: star.left,
@@ -51,7 +51,7 @@ export default function LoginPage() {
       ))}
       <div className="flex flex-col items-center justify-center flex-grow">
         <h1 className="text-5xl text-center font-bold mb-2">
-          <span className="text-white">stay</span>
+          <span className="text-black dark:text-white">stay</span>
           <span className="text-orange-500">Humble</span>
         </h1>
         <SignInForm

@@ -17,7 +17,7 @@ export default function LoginFooter() {
         <p className="mx-2">Reklamy</p>
         <p className="mx-2">Marketing</p>
       </div> */}
-      <div className="text-gray-500 text-xs mb-4 text-center">
+      <div className="text-black text-xs mb-4 text-center dark:text-gray-500">
         <p className="mx-2">© 2023 kode4mi</p>
       </div>
     </div>
