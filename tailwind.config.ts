@@ -13,8 +13,24 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      keyframes: {
+        twinkle: {
+          "0%, 100%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: "0",
+          },
+        },
+      },
+      animation: {
+        twinkle: "twinkle linear infinite",
+      },
+      screens: {
+        'sm': '1050px',
+      },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
