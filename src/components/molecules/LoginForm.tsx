@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from "react";
+import OrangeButton from "../atoms/commons/OrangeButton";
 
 interface LoginFormProps {
   onLogin: () => void;
@@ -25,13 +26,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, username, onUsernameChan
           </label>
           <input type="password" id="password" className="border rounded p-2 text-black" value={password} onChange={onPasswordChange} />
         </div>
-        <div className="flex items-center justify-center">
-          <button type="button" className="w-5/6 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 transition-all" onClick={onLogin}>
-            Zaloguj się
-          </button>
-        </div>
+        <OrangeButton content="Zaloguj się" onClick={onLogin} />
         <div className="flex flex-col items-center justify-center">
-        <button className="w-fit text-orange-500 text-[0.75rem] hover:underline transition-all"><a href="/signin">Utwórz konto</a></button>
+          <button className="w-fit text-orange-500 text-[0.75rem] hover:underline transition-all">
+            <a href="/signin">Utwórz konto</a>
+          </button>
         </div>
       </form>
     </div>
