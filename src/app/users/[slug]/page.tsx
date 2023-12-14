@@ -33,8 +33,9 @@ const exampleData = [
 const UserPage = ({params}: {
     params: { slug: number }
 }) => {
-    if(!(params.slug == 1 || params.slug == 0)){
+    if (!(params.slug == 1 || params.slug == 0)) {
         return (
+            // USER_NOT_FOUND message
             <div className="w-full h-full flex-1 flex justify-center items-center">
                 <h1>{"Nie znaleziono użytkownika"}</h1>
             </div>
@@ -44,16 +45,21 @@ const UserPage = ({params}: {
     const posts = exampleData[params.slug].posts.map(() => <div className="w-full h-60 bg-gray-500 rounded-3xl mb-2"></div>)
 
     return (
+        // User page
         <div className="flex flex-col min-h-screen min-w-[740px]">
+            {/*Profile bar*/}
             <div className="border-b border-gray-700 pb-4">
+                {/*Profile and background container*/}
                 <div className="w-full dark:bg-gray-900 bg-gray-300 h-60 relative mb-12">
+                    {/*Background picture*/}
                     <div className="w-full h-full overflow-hidden flex justify-center items-center">
                         {
                             exampleData[params.slug].background ?
-                                <img src={exampleData[params.slug].background} alt="background picture" /> :
+                                <img src={exampleData[params.slug].background} alt="background picture"/> :
                                 <h1>{`welcome to ${exampleData[params.slug].name}'s profile`}</h1>
                         }
                     </div>
+                    {/*Profile picture*/}
                     <div className="h-40 w-40 border-2 dark:border-black border-white rounded-full dark:bg-gray-900 bg-gray-300 absolute top-1/2 left-4 flex justify-center items-center overflow-hidden">
                         {
                             exampleData[params.slug].profile_picture ?
@@ -62,16 +68,19 @@ const UserPage = ({params}: {
                         }
                     </div>
                 </div>
+                {/*User info container*/}
                 <div className="pl-2 flex">
+                    {/*Username, description and stats*/}
                     <div className="flex-1">
                         <h1 className="font-bold tracking-wider">{exampleData[params.slug].name}</h1>
                         <p className="text-sm">{exampleData[params.slug].description}</p>
                         <div className="flex mt-1">
-                            <ProfileStat statNumber={exampleData[params.slug].following} statTitle={"obserwujących"} />
-                            <ProfileStat statNumber={exampleData[params.slug].followed} statTitle={"obserwowanych"} />
-                            <ProfileStat statNumber={exampleData[params.slug].humble_points} statTitle={"punktów pokory"} />
+                            <ProfileStat statNumber={exampleData[params.slug].following} statTitle={"obserwujących"}/>
+                            <ProfileStat statNumber={exampleData[params.slug].followed} statTitle={"obserwowanych"}/>
+                            <ProfileStat statNumber={exampleData[params.slug].humble_points} statTitle={"punktów pokory"}/>
                         </div>
                     </div>
+                    {/*Action buttons*/}
                     <div className="flex flex-col justify-center items-center">
                         <FollowButton userId={1} isFollowed={exampleData[params.slug].isFollowed}/>
                         {
@@ -80,21 +89,22 @@ const UserPage = ({params}: {
                     </div>
                 </div>
             </div>
-                {
-                    posts.length ?
-                        <div className="p-2">
-                            {posts.map((post) => (
-                                <div>
-                                    {post}
-                                </div>
-                            ))}
-                        </div>:
-                        (
-                            <div className="w-full h-full flex-1 flex justify-center items-center">
-                                <h1>{"Nie znaleziono wpisów"}</h1>
+            {/*User's post section*/}
+            {
+                posts.length ?
+                    <div className="p-2">
+                        {posts.map((post) => (
+                            <div>
+                                {post}
                             </div>
-                        )
-                }
+                        ))}
+                    </div> :
+                    (
+                        <div className="w-full h-full flex-1 flex justify-center items-center">
+                            <h1>{"Nie znaleziono wpisów"}</h1>
+                        </div>
+                    )
+            }
         </div>
     );
 };
