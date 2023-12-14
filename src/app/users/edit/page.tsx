@@ -1,9 +1,9 @@
 "use client"
 
-import ProfileStat from "@/components/atoms/ProfileStat";
-import FollowButton from "@/components/atoms/FollowButton";
 import ProfilePicture from "@/components/atoms/ProfilePicture";
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
+import Link from "next/link";
+import FitImageModal, {ImageProportions} from "@/components/molecules/FitImageModal";
 
 const exampleData = [
     {
@@ -22,14 +22,16 @@ const exampleData = [
 
 export default function EditUserPage() {
     const [profilePicture, setProfilePicture] = useState<string>(exampleData[0].profile_picture)
-    const [uploadedImage, setUploadedImage] = useState<string>("")
+    const [showModal, setShowModal] = useState<Boolean>(false)
+    const [proportions, setProportions] = useState<ImageProportions>({x: 0, y: 0})
+    const [imageSelectionHandler, setImageSelectionHandler] = useState<Function>(() => {})
 
-    const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files === null ) return;
+    const handleProfilePictureSelect  = () => {
+        setImageSelectionHandler(() => {
 
-        setUploadedImage(e.target.value)
-        const selectedFile = e.target.files[0];
-        setProfilePicture(URL.createObjectURL(selectedFile));
+        })
+        setProportions({x: 5, y: 5})
+        setShowModal(true);
     }
 
     return (
@@ -46,12 +48,13 @@ export default function EditUserPage() {
                 <ProfilePicture userName={"Kubuś"} imageURL={profilePicture} scale={3}/>
                 <ProfilePicture userName={"Kubuś"} imageURL={profilePicture} scale={2}/>
                 <ProfilePicture userName={"Kubuś"} imageURL={profilePicture}/>
-                <input type="file" value={uploadedImage} onChange={handleFileSelect}/>
+                <button onClick={handleProfilePictureSelect}>{"Wybierz zdjęcie profilowe"}</button>
             </div>
             <div className="pl-2 flex">
                 <input type="text" value={exampleData[0].name} className="font-bold tracking-wider dark:bg-black"/>
                 <textarea className="text-sm dark:bg-black">{exampleData[0].description}</textarea>
             </div>
+            {showModal && <FitImageModal imageProportions={proportions} handleImageSelection={imageSelectionHandler} closeModal={() => setShowModal(false)}/>}
         </div>
     );
 }
