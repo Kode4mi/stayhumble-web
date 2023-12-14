@@ -50,9 +50,11 @@ export default function LoginPage() {
         ></div>
       ))}
       <div className="flex flex-col items-center justify-center flex-grow">
-        <h1 className="text-5xl text-center font-bold mb-2">
+        <h1 className="text-5xl text-center font-bold mb-2 hover:text-[3.1rem] transition-all">
+          <a href="/login">
           <span className="text-black dark:text-white">stay</span>
           <span className="text-orange-500">Humble</span>
+          </a>
         </h1>
         <SignInForm
           onSignIn={handleSignIn}
