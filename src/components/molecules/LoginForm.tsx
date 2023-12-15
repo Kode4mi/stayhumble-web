@@ -27,7 +27,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, username, onUsernameChan
         </div>
         <div className="flex items-center justify-center">
           <button type="button" className="w-5/6 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 transition-all" onClick={onLogin}>
-            Zaloguj się
+          <a href="/header">Zaloguj się</a>
           </button>
         </div>
         <div className="flex flex-col items-center justify-center">
