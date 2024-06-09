@@ -1,3 +1,7 @@
+/**Profile picture component
+ * @param {string} imageURL - URL of the image
+ * @param {string} userName - If there is no image, the first letter of the username will be displayed
+ * @param {number} scale - The scale of the component (default 1)*/
 export default function ProfilePicture({imageURL, userName, scale}: { imageURL?: string, userName?: string, scale?: number }) {
     scale = scale ? scale : 1;
     return (

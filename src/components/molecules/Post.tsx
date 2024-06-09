@@ -17,7 +17,7 @@ const Post: React.FC<PostProps> = ({ authorName, content, likes, dislikes, share
   const totalLikes = likes - dislikes;
 
   return (
-    <div className="bg-white border-solid border-2 p-4 rounded-lg">
+    <div className="bg-white dark:bg-gray-700 border-solid border-2 p-4 rounded-lg">
       <div className='p-1'>
       <AuthorInfo authorName={authorName} />
       </div>
