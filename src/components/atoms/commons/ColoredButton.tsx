@@ -1,12 +1,12 @@
 import React from "react";
 
 interface ColoredButtonButtonProps {
-  onClick: () => void;
-  content: string;
-  background: string;
-  size: string;
-  icon: string;
-  additionalStyles: string;
+  onClick?: () => void;
+  content?: string;
+  background?: string;
+  size?: string;
+  icon?: string;
+  additionalStyles?: string;
 }
 
 const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, background, size, icon, additionalStyles  }) => {
