@@ -1,5 +1,14 @@
 import React from "react";
 
+interface ColoredButtonButtonProps {
+  onClick?: () => void;
+  content?: string;
+  background?: string;
+  size?: string;
+  icon?: string;
+  additionalStyles?: string;
+}
+
 /** 
  * ColoredButton Component
  * 
@@ -10,16 +19,6 @@ import React from "react";
  * @param {string} icon - The icon to display before the content.
  * @param {string} additionalStyles - Additional CSS classes to apply to the button.
  */
-
-interface ColoredButtonButtonProps {
-  onClick?: () => void;
-  content?: string;
-  background?: string;
-  size?: string;
-  icon?: string;
-  additionalStyles?: string;
-}
-
 const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, background, size, icon, additionalStyles  }) => {
   let color: string, hoverColor: string;
   let paddingX: string;
