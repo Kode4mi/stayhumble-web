@@ -16,13 +16,13 @@ export default function Navbar() {
         <div className="flex justify-center w-full">
           <hr className="w-[90%] border-slate-300 dark:border-white" />
         </div>
-        <div className="flex flex-col space-y-2 text-3xl py-4">
+        <div className="flex flex-col space-y-2 text-3xl py-4 w-full">
           <Link href="/header">
-            <ColoredButton content="Main Page" background="none" size="custom" icon="home" additionalStyles="text-4xl rounded-lg py-8 w-64" />
+            <ColoredButton content="Main Page" background="none" size="custom" icon="home" additionalStyles="text-4xl rounded-lg py-8" />
           </Link>
-          <ColoredButton content="Search" background="none" size="custom" icon="search" additionalStyles="text-4xl rounded-lg py-8 w-64" />
-          <ColoredButton content="Notifications" background="none" size="custom" icon="notifications" additionalStyles="text-4xl rounded-lg py-8 w-64" />
-          <ColoredButton content="Messages" background="none" size="custom" icon="chat" additionalStyles="text-4xl rounded-lg py-8 w-64" />
+          <ColoredButton content="Search" background="none" size="custom" icon="search" additionalStyles="text-4xl rounded-lg py-8 " />
+          <ColoredButton content="Notifications" background="none" size="custom" icon="notifications" additionalStyles="text-4xl rounded-lg py-8  " />
+          <ColoredButton content="Messages" background="none" size="custom" icon="chat" additionalStyles="text-4xl rounded-lg py-8 " />
         </div>
       </div>
       <div className="mb-16 scale-[1.75] p-4 w-48 border-gray-400 dark:border-black border rounded-md hover:scale-[1.8] hover:cursor-pointer">

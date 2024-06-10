@@ -1,7 +1,7 @@
-import React from 'react';
-import AuthorInfo from '../atoms/AuthorInfo';
-import PostContent from '../atoms/PostContent';
-import PostStats from '../atoms/PostStats';
+import React from "react";
+import AuthorInfo from "../atoms/AuthorInfo";
+import PostContent from "../atoms/PostContent";
+import PostStats from "../atoms/PostStats";
 
 interface PostProps {
   authorName: string;
@@ -10,22 +10,23 @@ interface PostProps {
   dislikes: number;
   shares: number;
   comments: number;
+  handleComment:() => void;
 }
 
-const Post: React.FC<PostProps> = ({ authorName, content, likes, dislikes, shares, comments }) => {
+const Post: React.FC<PostProps> = ({ authorName, content, likes, dislikes, shares, comments, handleComment }) => {
   // Combined number of likes and dislikes
   const totalLikes = likes - dislikes;
 
   return (
     <div className="bg-white dark:bg-gray-700 border-solid border-2 p-4 rounded-lg">
-      <div className='p-1'>
-      <AuthorInfo authorName={authorName} />
+      <div className="p-1">
+        <AuthorInfo authorName={authorName} />
       </div>
-      <div className='p-1'>
-      <PostContent content={content} />
+      <div className="p-1">
+        <PostContent content={content} />
       </div>
-      <hr className='w-full bg-black'></hr>
-      <PostStats likes={totalLikes} dislikes={dislikes} shares={shares} comments={comments} />
+      <hr className="w-full bg-black"></hr>
+      <PostStats likes={totalLikes} dislikes={dislikes} shares={shares} comments={comments} handleComment={handleComment} />
     </div>
   );
 };
