@@ -5,7 +5,9 @@ interface PostContentProps {
 }
 
 const PostContent: React.FC<PostContentProps> = ({ content }) => {
-  return <div>{content}</div>;
+  return <div className="font-light py-6">
+    {content}
+  </div>;
 };
 
 export default PostContent;

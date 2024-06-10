@@ -51,7 +51,7 @@ const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, b
       break;
     case "none":
       color = "bg-inherit text-black dark:text-white";
-      hoverColor = "hover:scale-105";
+      hoverColor = "hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10";
       break;
     case "white":
       color = "bg-white border border-black text-black";
