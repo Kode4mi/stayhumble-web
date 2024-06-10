@@ -4,10 +4,15 @@ interface ColoredButtonButtonProps {
   onClick: () => void;
   content: string;
   background: string;
+  size: string;
+  icon: string;
+  additionalStyles: string;
 }
 
-const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, background }) => {
+const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, background, size, icon, additionalStyles  }) => {
   let color: string, hoverColor: string;
+  let paddingX: string;
+  let paddingY: string;
 
   switch (background) {
     case "orange":
@@ -19,7 +24,7 @@ const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, b
       hoverColor = "hover:bg-red-800";
       break;
     case "blue":
-      color = "bg-blue-700 text-white" ;
+      color = "bg-blue-700 text-white";
       hoverColor = "hover:bg-blue-800";
       break;
     case "green":
@@ -34,6 +39,10 @@ const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, b
       color = "bg-purple-700 text-white";
       hoverColor = "hover:bg-purple-800";
       break;
+    case "none":
+      color = "bg-inherit text-black dark:text-white";
+      hoverColor = "hover:scale-105";
+      break;
     case "white":
       color = "bg-white border border-black text-black";
       hoverColor = "hover:bg-gray-100";
@@ -43,12 +52,41 @@ const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, b
       hoverColor = "hover:bg-orange-600";
   }
 
-  const buttonClasses = `w-fit py-2 px-12 rounded transition-all ${color} ${hoverColor}`;
+  switch (size) {
+    case "s":
+      paddingX = "px-12";
+      paddingY = "py-2";
+      break;
+    case "m":
+      paddingX = "px-16";
+      paddingY = "py-4";
+      break;
+    case "l":
+      paddingX = "px-20";
+      paddingY = "py-6";
+      break;
+    case "xl":
+      paddingX = "px-24";
+      paddingY = "py-8";
+      break;
+    case "custom":
+      paddingX = "";
+      paddingY = "";
+      break;
+    default:
+      paddingX = "px-12";
+      paddingY = "py-2";
+  }
+
+  const buttonClasses = `w-fit ${paddingX} ${paddingY} rounded transition-all ${color} ${hoverColor} ${additionalStyles}`;
 
   return (
     <div className="flex items-center justify-center">
       <button type="button" className={buttonClasses} onClick={onClick}>
-        {content}
+        <div className="flex items-center space-x-2">
+          <span className="material-symbols-outlined text-4xl">{icon}</span>
+          <span>{content}</span>
+        </div>
       </button>
     </div>
   );
