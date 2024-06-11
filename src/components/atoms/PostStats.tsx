@@ -11,9 +11,9 @@ interface PostStatsProps {
 const PostStats: React.FC<PostStatsProps> = ({ likes, dislikes, comments, shares, handleComment }) => {
   const shortenNumber = (num: number): string => {
     if (num < 1000) return num.toString();
-    if (num < 1e6) return (num / 1e3).toFixed(1) + "k";
-    if (num < 1e9) return (num / 1e6).toFixed(1) + "M";
-    return (num / 1e9).toFixed(1) + "B";
+    if (num < 1000000) return Math.floor(num / 100) / 10 + "k";
+    if (num < 1000000000) return (num / 1000000).toFixed(1) + "M";
+    return (num / 1000000000).toFixed(1) + "B";
   };
   
   const shortTotalLikes = shortenNumber(likes);
@@ -22,7 +22,7 @@ const PostStats: React.FC<PostStatsProps> = ({ likes, dislikes, comments, shares
 
   return (
     <div className="w-full h-8 leading-8 font-light flex items-center">
-      <div className="flex items-center justify-between w-[10%]">
+      <div className="flex items-center justify-between w-[12%]">
         <button className="flex items-center">
           <span className="material-symbols-outlined text-orange-500">thumb_up</span>
         </button>

@@ -10,7 +10,7 @@ export default function layout({children}: {children: React.ReactNode}) {
       <div className="w-[22%] h-screen">
         <Navbar />
       </div>
-      <div className="w-[56%]">{children}</div>
+      <div className="w-full px-36 ">{children}</div>
       <div className="w-[22%]">
         <SearchBar />
         <SuggestedFriendsNavbar />
@@ -26,4 +26,3 @@ export default function layout({children}: {children: React.ReactNode}) {
     </div>
   );
 }
- 

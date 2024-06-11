@@ -15,7 +15,7 @@ export default function SuggestedFriendsNavbar() {
   ];
 
   return (
-    <div className="flex flex-col bg-slate-200 dark:bg-[#090d15] p-4 mx-4 rounded-md">
+    <div className="flex flex-col bg-slate-200 dark:bg-[#090d15] p-4 mr-8 rounded-md">
       <h2 className="text-black text-2xl font-semibold dark:text-white">Suggested Friends</h2>
       <hr className="my-2 border-orange-500" />
       {suggestedFriends.map((friend, index) => (
