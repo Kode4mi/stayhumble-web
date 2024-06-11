@@ -5,7 +5,7 @@ interface PostStatsProps {
   dislikes: number;
   comments: number;
   shares: number;
-  handleComment:() => void;
+  handleComment?:() => void;
 }
 
 const PostStats: React.FC<PostStatsProps> = ({ likes, dislikes, comments, shares, handleComment }) => {
@@ -16,7 +16,7 @@ const PostStats: React.FC<PostStatsProps> = ({ likes, dislikes, comments, shares
                     <span className="material-symbols-outlined">thumb_up</span>
                 </button>
                 <span className="mx-4 w-1/4 overflow-x-hidden text-center">
-                    {likes}
+                    {likes - dislikes}
                 </span>
                 <button className="flex items-center">
                     <span className="material-symbols-outlined">thumb_down</span>

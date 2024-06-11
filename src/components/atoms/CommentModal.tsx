@@ -1,12 +1,21 @@
 import React from "react";
+import PostContent from "@/components/atoms/PostContent";
+import ProfilePicture from "@/components/atoms/ProfilePicture";
+import PostStats from "@/components/atoms/PostStats";
 
 interface ModalProps {
   show: boolean;
+  authorName: string;
+  content: string;
+  likes: number;
+  dislikes: number;
+  shares: number;
+  comments: number;
+  postTime: string;
   onClose: () => void;
-  children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
+const CommentModal: React.FC<ModalProps> = ({ show, onClose, authorName, content, likes, dislikes, shares, comments, postTime }) => {
   if (!show) return null;
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -17,13 +26,26 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 " onClick={handleOverlayClick}>
-      <div className="relative bg-white dark:bg-gray-800 w-[30%] h-fit rounded-lg shadow-lg p-2 ">
+      <div className="relative bg-white dark:bg-gray-800 w-1/3 h-fit rounded-lg shadow-lg p-2 ">
         <button onClick={onClose} className="absolute top-2 right-4 text-xl font-bold">
           &times;
         </button>
-        <span>{children}</span>
+        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex">
+          <div>
+            <ProfilePicture userName={authorName} scale={0.8}/>
+          </div>
+          <div className="w-full px-1">
+            <h3 className="h-8 leading-8 font-bold">
+              {authorName}
+              <span className="font-extralight mx-4 text-sm">{postTime}</span>
+            </h3>
+            <PostContent content={content}/>
+            <PostStats likes={likes} dislikes={dislikes} shares={shares} comments={comments}/>
+          </div>
+        </div>
+
         <div className="w-full h-full mt-2 ">
-          <textarea className="text-black w-full px-4 py-2 h-auto leading-5 resize-none rounded-lg" placeholder="Napisz odpowiedź:" rows={8} />
+          <textarea className="dark:bg-gray-700 bg-slate-300 w-full px-4 py-2 h-auto leading-5 resize-none rounded-lg outline-0 border-none" placeholder="Napisz odpowiedź:" rows={8} />
         </div>
         <div className="flex justify-end">
           <button className="bg-slate-500 text-white px-4 py-2 rounded-lg hover:bg-slate-600 transition-colors">Odpowiedz</button>
@@ -33,4 +55,4 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
   );
 };
 
-export default Modal;
+export default CommentModal;
