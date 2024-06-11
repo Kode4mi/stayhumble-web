@@ -6,12 +6,12 @@ import Navbar from "@/components/molecules/Navbar";
 
 export default function layout({children}: {children: React.ReactNode}) {
   return (
-    <div className="flex flex-row bg-slate-100 dark:bg-gray-900">
-      <div className="w-[22%] h-screen">
+    <div className="flex flex-row h-full w-screen bg-slate-100 dark:bg-gray-900 ">
+      <div className="w-[22%] h-screen web:flex hidden  ">
         <Navbar />
       </div>
-      <div className="w-full px-36 ">{children}</div>
-      <div className="w-[22%]">
+      <div className="w-full h-full web:px-36 pr-2  ">{children}</div>
+      <div className="w-[22%] h-full web:block hidden ">
         <SearchBar />
         <SuggestedFriendsNavbar />
       </div>

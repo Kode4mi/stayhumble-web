@@ -27,7 +27,7 @@ const config: Config = {
         twinkle: "twinkle linear infinite",
       },
       screens: {
-        'sm': '1050px',
+        'web': '1150px',
       },
     },
   },
