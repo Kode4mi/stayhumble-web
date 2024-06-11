@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import PostContent from "../atoms/PostContent";
 import PostStats from "../atoms/PostStats";
 import ProfilePicture from "@/components/atoms/ProfilePicture";
-import CommentModal from "@/components/atoms/CommentModal";
+import CommentModal from "@/components/molecules/CommentModal";
 
 interface PostProps {
   authorName: string;

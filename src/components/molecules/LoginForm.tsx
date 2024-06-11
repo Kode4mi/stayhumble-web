@@ -32,6 +32,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, username, onUsernameChan
             <a href="/signin">Utwórz konto</a>
           </button>
         </div>
+        <hr/>
+        <div className="flex flex-col items-center justify-center">
+          <button className="w-fit text-orange-500 text-[0.75rem] hover:underline transition-all">
+            <a href="/home">Kontynuuj bez logowania</a>
+          </button>
+        </div>
       </form>
     </div>
   );

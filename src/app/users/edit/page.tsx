@@ -1,28 +1,15 @@
 "use client"
 
 import ProfilePicture from "@/components/atoms/ProfilePicture";
-import React, {useEffect, useState} from "react";
-import Link from "next/link";
+import React, { useState} from "react";
 import FitImageModal, {ImageProportions} from "@/components/molecules/FitImageModal";
-
-const exampleData = [
-    {
-        name: "Wietnamczyk",
-        background: "", //https://pbs.twimg.com/profile_banners/3092380451/1507906844/1500x500",
-        profile_picture: "https://pbs.twimg.com/profile_images/1699087758231265280/LeLYlUkH_400x400.jpg",
-        description: "lubie wachac stopy",
-        posts: [],
-        following: 3,
-        followed: 160,
-        humble_points: 50,
-        isFollowed: false,
-        isFollowing: true
-    }
-]
+import {useUser} from "@/context/UserContext";
 
 export default function EditUserPage() {
-    const [profilePicture, setProfilePicture] = useState<string>(exampleData[0].profile_picture)
-    const [background, setBackground] = useState<string>(exampleData[0].background)
+    const {user} = useUser();
+
+    const [profilePicture, setProfilePicture] = useState<string | undefined>(user?.profilePicture)
+    const [background, setBackground] = useState<string | undefined>(user?.backgroundPicture)
     const [showModal, setShowModal] = useState<Boolean>(false)
     const [proportions, setProportions] = useState<ImageProportions>({x: 0, y: 0})
     const [imageSelectionHandler, setImageSelectionHandler] = useState<Function>(() => () => {})
@@ -39,13 +26,13 @@ export default function EditUserPage() {
         setShowModal(true);
     }
 
-    return (
+    if(user) return (
         <div className="border-b border-gray-700 pb-4">
             <div className="w-full h-60 flex justify-center items-center dark:bg-gray-900 bg-gray-300 relative mb-12">
                 {
                     background ?
                         <img src={background} alt="background picture"/> :
-                        <h1>{`welcome to ${exampleData[0].name}'s profile`}</h1>
+                        <h1>{`welcome to ${user.name}'s profile`}</h1>
                 }
             </div>
             <button onClick={handleBackgroundSelect}>{"Wybierz zdjęcie w tle"}</button>
@@ -57,10 +44,17 @@ export default function EditUserPage() {
                 <button onClick={handleProfilePictureSelect}>{"Wybierz zdjęcie profilowe"}</button>
             </div>
             <div className="pl-2 flex">
-                <input type="text" defaultValue={exampleData[0].name} className="font-bold tracking-wider dark:bg-black"/>
-                <textarea className="text-sm dark:bg-black" defaultValue={exampleData[0].description}></textarea>
+                <input type="text" defaultValue={user.name} className="font-bold tracking-wider dark:bg-black"/>
+                <textarea className="text-sm dark:bg-black" defaultValue={user.description}></textarea>
             </div>
             {showModal && <FitImageModal imageProportions={proportions} handleImageSelection={imageSelectionHandler} closeModal={() => setShowModal(false)}/>}
         </div>
     );
+
+    return (
+        <div className="flex justify-center items-center h-screen">
+            <span>Zaloguj się by edytować profil</span>
+        </div>
+    );
+
 }
