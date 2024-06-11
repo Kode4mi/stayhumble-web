@@ -1,6 +1,5 @@
 import React from "react";
 import SuggestedFriendsNavbar from "@/components/molecules/SuggestedFriendsNavbar";
-import CommentModal from "@/components/atoms/CommentModal";
 import SearchBar from "@/components/atoms/SearchBar";
 import Navbar from "@/components/molecules/Navbar";
 

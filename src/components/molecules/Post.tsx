@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import PostContent from "../atoms/PostContent";
 import PostStats from "../atoms/PostStats";
 import ProfilePicture from "@/components/atoms/ProfilePicture";
-import {PostModel} from "@/models/post.model";
 import CommentModal from "@/components/atoms/CommentModal";
 
 interface PostProps {
