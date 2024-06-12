@@ -42,7 +42,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSignIn, email, fullName, user
           </label>
           <input type="text" id="name" className="border rounded p-2 text-black mb-4" value={fullName} onChange={onNameChange} />
         </div>
-          <ColoredButton content="Zarejestruj się" onClick={onSignIn} background="orange" />
+          <ColoredButton content="Zarejestruj się" onClick={onSignIn} backgroundOption="orange" />
         <div className="flex flex-col items-center justify-center">
           <hr className="h-2 w-full text-orange-500" />
           <p className="text-black mt-2">Masz już konto?</p>
