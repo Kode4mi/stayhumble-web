@@ -5,31 +5,22 @@ import {useUser} from "@/context/UserContext";
 
 export function ActiveUserProfileLink() {
     const [isOpen, setIsOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
     const {logout, user} = useUser();
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
     };
 
-    const handleClickOutside = (event: MouseEvent) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-            setIsOpen(false);
-        }
+    const handleMouseLeave = () => {
+        setIsOpen(false);
     };
 
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
 
     function onLogout() {
         logout();
     }
 
-    if(user !== null) return <div ref={dropdownRef}>
+    if(user !== null) return <div onMouseLeave={handleMouseLeave} className="mb-16 p-4 w-48 dark:hover:bg-gray-900 hover:bg-slate-300 rounded-xl hover:cursor-pointer">
         <div className="flex items-center">
             <Link href="/users/1" className="flex items-center flex-1">
                 <ProfilePicture userName={user.name}/>
@@ -44,12 +35,12 @@ export function ActiveUserProfileLink() {
         {isOpen && (
             <div className="flex absolute z-10 bg-slate-400 dark:bg-gray-800 dark:text-white p-2 rounded-xl translate-x-[100%]">
                 <ul>
-                    <li className="p-1">
+                    <li className="p-1 dark:hover:bg-gray-700 hover:bg-slate-500">
                         <Link href="/users/edit">
                             <span>Edytuj profil</span>
                         </Link>
                     </li>
-                    <li className="p-1">
+                    <li className="p-1 dark:hover:bg-gray-700 hover:bg-slate-500">
                         <button onClick={onLogout}>
                             <span>Wyloguj</span>
                         </button>

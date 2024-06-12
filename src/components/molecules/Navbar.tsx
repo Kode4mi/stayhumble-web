@@ -25,9 +25,7 @@ export default function Navbar() {
             <ColoredButton content="Notifications" backgroundOption="none" size="custom" icon="notifications" additionalStyles="text-xl rounded-lg py-4 w-full"/>
           </div>
         </div>
-        <div className="mb-16 p-4 w-48 dark:hover:bg-gray-900 hover:bg-slate-300 rounded-xl hover:cursor-pointer">
           <ActiveUserProfileLink/>
-        </div>
       </div>
   );
 }
