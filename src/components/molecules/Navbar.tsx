@@ -5,7 +5,7 @@ import ProfilePicture from "@/components/atoms/ProfilePicture";
 
 export default function Navbar() {
   return (
-    <div className="flex flex-col fixed items-center justify-between bg-slate-200 dark:bg-[#090d15] py-12 px-14 h-full  ">
+    <div className="flex flex-col items-center justify-between bg-slate-200 dark:bg-[#090d15] py-12 px-14 h-full  ">
       <div>
         <Link href="/home">
           <h1 className=" text-4xl font-bold pt-6 pb-8 text-center transition-all">
