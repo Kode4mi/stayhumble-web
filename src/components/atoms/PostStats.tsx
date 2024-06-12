@@ -5,7 +5,7 @@ interface PostStatsProps {
   dislikes: number;
   comments: number;
   shares: number;
-  handleComment: () => void;
+  handleComment?: () => void;
 }
 
 const PostStats: React.FC<PostStatsProps> = ({ likes, dislikes, comments, shares, handleComment }) => {

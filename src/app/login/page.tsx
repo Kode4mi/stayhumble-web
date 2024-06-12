@@ -2,6 +2,9 @@
 import { useState, useEffect } from "react";
 import LoginForm from "../../components/molecules/LoginForm";
 import LoginFooter from "@/components/atoms/LoginFooter";
+import {UserModel} from "@/models/user.model";
+import {useUser} from "@/context/UserContext";
+import {useRouter} from "next/navigation";
 
 interface Star {
   top: string;
@@ -13,6 +16,9 @@ export default function LoginPage() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [stars, setStars] = useState<Star[]>([]);
+
+  const {login, user} = useUser();
+  const router = useRouter();
 
   const generateStars = () => {
     const newStars: Star[] = [];
@@ -30,8 +36,20 @@ export default function LoginPage() {
     generateStars();
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      router.push("/home");
+    }
+  }, [user]);
+
   const handleLogin = () => {
     console.log("Logowanie:", username, password);
+    const userData: UserModel = {
+      id: Math.floor(Math.random() * 10000),
+      name: username
+    }
+    login(userData);
+    router.push("/home")
   };
 
   return (

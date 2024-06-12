@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import PostContent from "../atoms/PostContent";
 import PostStats from "../atoms/PostStats";
 import ProfilePicture from "@/components/atoms/ProfilePicture";
+import CommentModal from "@/components/molecules/CommentModal";
 
 interface PostProps {
   authorName: string;
@@ -11,12 +12,19 @@ interface PostProps {
   shares: number;
   comments: number;
   postTime: string;
-  handleComment:() => void;
 }
 
-const Post: React.FC<PostProps> = ({ authorName, content, likes, dislikes, shares, comments, handleComment, postTime }) => {
-  // Combined number of likes and dislikes
-  const totalLikes = likes - dislikes;
+const Post: React.FC<PostProps> = (props) => {
+    const {authorName, content, likes, dislikes, shares, comments, postTime} = props;
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+    const handleComment = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex">
@@ -29,8 +37,9 @@ const Post: React.FC<PostProps> = ({ authorName, content, likes, dislikes, share
                     <span className="font-extralight mx-4 text-sm">{postTime}</span>
                 </h3>
                 <PostContent content={content}/>
-                <PostStats likes={totalLikes} dislikes={dislikes} shares={shares} comments={comments} handleComment={handleComment}/>
+                <PostStats likes={likes} dislikes={dislikes} shares={shares} comments={comments} handleComment={handleComment}/>
             </div>
+            <CommentModal show={isModalOpen} onClose={handleCloseModal} authorName={authorName} content={content} likes={likes} dislikes={dislikes} shares={shares} comments={comments} postTime={postTime} />
         </div>
     );
 };

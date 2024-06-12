@@ -26,10 +26,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, username, onUsernameChan
           </label>
           <input type="password" id="password" className="border rounded p-2 text-black" value={password} onChange={onPasswordChange} />
         </div>
-        <ColoredButton content="Zaloguj się" onClick={onLogin} background="orange" />
+        <ColoredButton content="Zaloguj się" onClick={onLogin} backgroundOption="orange" />
         <div className="flex flex-col items-center justify-center">
           <button className="w-fit text-orange-500 text-[0.75rem] hover:underline transition-all">
             <a href="/signin">Utwórz konto</a>
+          </button>
+        </div>
+        <hr/>
+        <div className="flex flex-col items-center justify-center">
+          <button className="w-fit text-orange-500 text-[0.75rem] hover:underline transition-all">
+            <a href="/home">Kontynuuj bez logowania</a>
           </button>
         </div>
       </form>

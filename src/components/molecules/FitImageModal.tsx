@@ -1,8 +1,6 @@
 "use client"
 
-import React, {useCallback, useEffect, useState} from "react";
-import * as sharp from 'sharp';
-import {exec} from "child_process";
+import React, { useEffect, useState} from "react";
 
 type FitImageModalProps = {
     imageProportions: ImageProportions,
