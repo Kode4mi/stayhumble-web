@@ -37,10 +37,10 @@ export default function EditUserPage() {
             </div>
             <button onClick={handleBackgroundSelect}>{"Wybierz zdjęcie w tle"}</button>
             <div className="flex items-end justify-between mb-12">
-                <ProfilePicture userName={"Kubuś"} imageURL={profilePicture} scale={4}/>
-                <ProfilePicture userName={"Kubuś"} imageURL={profilePicture} scale={3}/>
-                <ProfilePicture userName={"Kubuś"} imageURL={profilePicture} scale={2}/>
-                <ProfilePicture userName={"Kubuś"} imageURL={profilePicture}/>
+                <ProfilePicture userName={user.name} imageURL={profilePicture} scale={4}/>
+                <ProfilePicture userName={user.name} imageURL={profilePicture} scale={3}/>
+                <ProfilePicture userName={user.name} imageURL={profilePicture} scale={2}/>
+                <ProfilePicture userName={user.name} imageURL={profilePicture}/>
                 <button onClick={handleProfilePictureSelect}>{"Wybierz zdjęcie profilowe"}</button>
             </div>
             <div className="pl-2 flex">

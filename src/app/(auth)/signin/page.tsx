@@ -1,13 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
-import SignInForm from "../../components/molecules/SignInForm";
+import {useState, useEffect} from "react";
+import SignInForm from "../../../components/molecules/SignInForm";
 import LoginFooter from "@/components/atoms/LoginFooter";
+import {BeautifierService} from "@/services/beautifier.service";
+import {Star} from "@/models/star.model";
 
-interface Star {
-  top: string;
-  left: string;
-  animationDuration: string;
-}
 
 export default function LoginPage() {
   const [username, setUsername] = useState<string>("");
@@ -16,20 +13,10 @@ export default function LoginPage() {
   const [password, setPassword] = useState<string>("");
   const [stars, setStars] = useState<Star[]>([]);
 
-  const generateStars = () => {
-    const newStars: Star[] = [];
-    for (let i = 0; i < 200; i++) {
-      newStars.push({
-        top: Math.random() * 100 + "vh",
-        left: Math.random() * 100 + "vw",
-        animationDuration: Math.random() * 2 + 1 + "s",
-      });
-    }
-    setStars(newStars);
-  };
+  const beautifierService = new BeautifierService()
 
   useEffect(() => {
-    generateStars();
+    beautifierService.generateStars(setStars);
   }, []);
 
   const handleSignIn = () => {
