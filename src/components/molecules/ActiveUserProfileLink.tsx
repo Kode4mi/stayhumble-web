@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ProfilePicture from "@/components/atoms/ProfilePicture";
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import {useUser} from "@/context/UserContext";
 
 export function ActiveUserProfileLink() {
@@ -24,7 +24,7 @@ export function ActiveUserProfileLink() {
         <div className="flex items-center">
             <Link href="/users/1" className="flex items-center flex-1">
                 <ProfilePicture userName={user.name}/>
-                <span className="px-1 flex-1">
+                <span className="px-1 flex-1 w-12 overflow-hidden">
                     {user.name}
                 </span>
             </Link>
@@ -51,6 +51,6 @@ export function ActiveUserProfileLink() {
     </div>;
 
     return <Link href="/login">
-        <span>Zaloguj się</span>
-    </Link>
+            <span className="px-1 flex-1 w-12 overflow-hidden">Zaloguj się</span>
+        </Link>
 };
