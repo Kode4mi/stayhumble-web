@@ -19,10 +19,10 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col space-y-2 text-3xl py-4 w-full">
             <Link href="/home">
-              <ColoredButton content="Main Page" background="none" size="custom" icon="home" additionalStyles="text-xl rounded-lg py-4 w-full"/>
+              <ColoredButton content="Main Page" backgroundOption="none" size="custom" icon="home" additionalStyles="text-xl rounded-lg py-4 w-full"/>
             </Link>
-            <ColoredButton content="Search" background="none" size="custom" icon="search" additionalStyles="text-xl rounded-lg py-4 w-full"/>
-            <ColoredButton content="Notifications" background="none" size="custom" icon="notifications" additionalStyles="text-xl rounded-lg py-4 w-full"/>
+            <ColoredButton content="Search" backgroundOption="none" size="custom" icon="search" additionalStyles="text-xl rounded-lg py-4 w-full"/>
+            <ColoredButton content="Notifications" backgroundOption="none" size="custom" icon="notifications" additionalStyles="text-xl rounded-lg py-4 w-full"/>
           </div>
         </div>
         <div className="mb-16 p-4 w-48 dark:hover:bg-gray-900 hover:bg-slate-300 rounded-xl hover:cursor-pointer">
