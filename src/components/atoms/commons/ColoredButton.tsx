@@ -93,7 +93,7 @@ const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, b
     <div className="flex items-center justify-center">
       <button type="button" className={buttonClasses} onClick={onClick}>
         <div className="flex items-center space-x-2">
-          <span className="material-symbols-outlined text-4xl">{icon}</span>
+          <span className="material-symbols-outlined text-4xl text-orange-500">{icon}</span>
           <span>{content}</span>
         </div>
       </button>
