@@ -27,19 +27,23 @@ const Post: React.FC<PostProps> = (props) => {
     };
 
     return (
-        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex">
-            <div>
-                <ProfilePicture userName={authorName} scale={0.8}/>
+        <div className="bg-white dark:bg-gray-800 py-4 rounded-lg">
+            <div className="flex mx-4">
+                <div>
+                    <ProfilePicture userName={authorName} scale={0.8}/>
+                </div>
+                <div className="px-1">
+                    <h3 className="h-8 leading-8 font-bold">
+                        {authorName}
+                        <span className="font-extralight mx-4 text-sm">{postTime}</span>
+                    </h3>
+                    <PostContent content={content}/>
+                </div>
             </div>
-            <div className="w-full px-1">
-                <h3 className="h-8 leading-8 font-bold">
-                    {authorName}
-                    <span className="font-extralight mx-4 text-sm">{postTime}</span>
-                </h3>
-                <PostContent content={content}/>
+            <div className="w-full pl-[3.25rem] pr-[0.25rem] pt-2 border-t-2 dark:border-gray-900 border-slate-200">
                 <PostStats likes={likes} dislikes={dislikes} shares={shares} comments={comments} handleComment={handleComment}/>
             </div>
-            <CommentModal show={isModalOpen} onClose={handleCloseModal} authorName={authorName} content={content} likes={likes} dislikes={dislikes} shares={shares} comments={comments} postTime={postTime} />
+            <CommentModal show={isModalOpen} onClose={handleCloseModal} authorName={authorName} content={content} likes={likes} dislikes={dislikes} shares={shares} comments={comments} postTime={postTime}/>
         </div>
     );
 };
