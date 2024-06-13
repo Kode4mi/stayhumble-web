@@ -9,7 +9,7 @@
 }
 
 :root {
-  font-size: clamp(10px,0.83vw,24px);
+  font-size: clamp(12px,0.83vw,24px);
 }
 
 @media (prefers-color-scheme: dark) {

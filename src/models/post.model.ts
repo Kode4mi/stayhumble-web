@@ -4,6 +4,8 @@ export interface PostModel {
     likes: number;
     dislikes: number;
     shares: number;
-    comments: number;
+    commentCount: number;
     time: string;
+    imageUrl?: string;
+    replies?: PostModel[];
 }
