@@ -29,7 +29,7 @@ const CommentModal: React.FC<ModalProps> = ({ show, onClose, authorName, content
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 " onClick={handleOverlayClick}>
-      <div className="relative bg-white dark:bg-gray-800 w-1/3 h-fit rounded-lg shadow-lg p-2 ">
+      <div className="relative bg-white dark:bg-gray-800 web:w-[40%] w-11/12 h-fit rounded-lg shadow-lg p-2 ">
         <button onClick={onClose} className="absolute top-2 right-4 text-xl font-bold">
           &times;
         </button>
