@@ -2,6 +2,7 @@ import React from "react";
 import SuggestedFriendsNavbar from "@/components/molecules/SuggestedFriendsNavbar";
 import Navbar from "@/components/molecules/Navbar";
 import ThemeSwitch from "@/components/atoms/ThemeSwitch";
+import PhoneNavbar from "@/components/molecules/PhoneNavbar";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,21 +17,8 @@ export default function layout({ children }: { children: React.ReactNode }) {
         </div>
         <SuggestedFriendsNavbar />
       </div>
-      <div className="w-full fixed bottom-0 bg-transparent p-4 web:hidden ">
-        <div className="flex justify-around ">
-          <button className="flex flex-col items-center">
-            <span className="material-symbols-outlined text-orange-600">home</span>
-            <span>Dom</span>
-          </button>
-          <button className="flex flex-col items-center">
-            <span className="material-symbols-outlined text-orange-600">search</span>
-            <span>Szukaj</span>
-          </button>
-          <button className="flex flex-col items-center">
-            <span className="material-symbols-outlined text-orange-600">person</span>
-            <span>Profil</span>
-          </button>
-        </div>
+      <div className="w-full fixed bottom-0 bg-opacity-95 p-4 web:hidden bg-slate-100 dark:bg-gray-900 ">
+        <PhoneNavbar />
       </div>
     </div>
   );
