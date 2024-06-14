@@ -6,7 +6,7 @@ import PhoneNavbar from "@/components/molecules/PhoneNavbar";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid web:grid-cols-[22%_1fr_22%] h-full min-h-screen w-screen web:overflow-x-auto overflow-x-hidden bg-slate-100 dark:bg-gray-900 text-black dark:text-white">
+    <div className="web:grid web:grid-cols-[22%_1fr_22%] h-full min-h-screen w-screen web:overflow-x-auto overflow-x-hidden bg-slate-100 dark:bg-gray-900">
       <div className="h-screen left-0 top-0 bottom-0 web:flex hidden fixed">
         <Navbar />
       </div>

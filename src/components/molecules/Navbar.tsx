@@ -21,7 +21,9 @@ export default function Navbar() {
             <Link href="/home">
               <ColoredButton content="Main Page" backgroundOption="none" size="custom" icon="home" additionalStyles="text-xl rounded-lg py-4 w-full"/>
             </Link>
-            <ColoredButton content="Search" backgroundOption="none" size="custom" icon="search" additionalStyles="text-xl rounded-lg py-4 w-full"/>
+            <Link href="/search">
+                <ColoredButton content="Search" backgroundOption="none" size="custom" icon="search" additionalStyles="text-xl rounded-lg py-4 w-full"/>
+            </Link>
             <ColoredButton content="Notifications" backgroundOption="none" size="custom" icon="notifications" additionalStyles="text-xl rounded-lg py-4 w-full"/>
           </div>
         </div>
