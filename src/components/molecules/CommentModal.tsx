@@ -14,9 +14,10 @@ interface ModalProps {
   comments: number;
   postTime: string;
   onClose: () => void;
+  userReaction: string | null;
 }
 
-const CommentModal: React.FC<ModalProps> = ({ show, onClose, authorName, content, likes, dislikes, shares, comments, postTime }) => {
+const CommentModal: React.FC<ModalProps> = ({ show, onClose, authorName, content, likes, dislikes, shares, comments, postTime, userReaction }) => {
   if (!show) return null;
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -43,7 +44,7 @@ const CommentModal: React.FC<ModalProps> = ({ show, onClose, authorName, content
               <span className="font-extralight mx-4 text-sm">{postTime}</span>
             </h3>
             <PostContent content={content}/>
-            <PostStats likes={likes} dislikes={dislikes} shares={shares} comments={comments}/>
+            <PostStats likes={likes} dislikes={dislikes} shares={shares} comments={comments} userReaction={userReaction} />
           </div>
         </div>
 
