@@ -5,7 +5,7 @@ interface PostContentProps {
 }
 
 const PostContent: React.FC<PostContentProps> = ({ content }) => {
-  return <div className="font-light py-6">
+  return <div className="font-light py-2">
     {content}
   </div>;
 };

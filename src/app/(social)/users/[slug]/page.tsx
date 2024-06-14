@@ -50,7 +50,7 @@ const UserPage = ({params}: {
             {/*Profile bar*/}
             <div className="border-b border-gray-700 pb-4">
                 {/*Profile and background container*/}
-                <div className="w-full dark:bg-gray-900 bg-gray-300 h-60 relative mb-12">
+                <div className="w-full dark:bg-gray-800 bg-gray-300 h-60 relative mb-12">
                     {/*Background picture*/}
                     <div className="w-full h-full overflow-hidden flex justify-center items-center">
                         {

@@ -1,16 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import LoginForm from "../../components/molecules/LoginForm";
+import LoginForm from "../../../components/molecules/LoginForm";
 import LoginFooter from "@/components/atoms/LoginFooter";
 import {UserModel} from "@/models/user.model";
 import {useUser} from "@/context/UserContext";
 import {useRouter} from "next/navigation";
-
-interface Star {
-  top: string;
-  left: string;
-  animationDuration: string;
-}
+import {Star} from "@/models/star.model";
+import {BeautifierService} from "@/services/beautifier.service";
 
 export default function LoginPage() {
   const [username, setUsername] = useState<string>("");
@@ -20,20 +16,10 @@ export default function LoginPage() {
   const {login, user} = useUser();
   const router = useRouter();
 
-  const generateStars = () => {
-    const newStars: Star[] = [];
-    for (let i = 0; i < 200; i++) {
-      newStars.push({
-        top: Math.random() * 100 + "vh",
-        left: Math.random() * 100 + "vw",
-        animationDuration: Math.random() * 2 + 1 + "s",
-      });
-    }
-    setStars(newStars);
-  };
+  const beautifierService = new BeautifierService()
 
   useEffect(() => {
-    generateStars();
+    beautifierService.generateStars(setStars);
   }, []);
 
   useEffect(() => {
