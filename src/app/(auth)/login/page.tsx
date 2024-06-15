@@ -2,21 +2,22 @@
 import { useState, useEffect } from "react";
 import LoginForm from "../../../components/molecules/LoginForm";
 import LoginFooter from "@/components/atoms/LoginFooter";
-import {UserModel} from "@/models/user.model";
-import {useUser} from "@/context/UserContext";
-import {useRouter} from "next/navigation";
-import {Star} from "@/models/star.model";
-import {BeautifierService} from "@/services/beautifier.service";
+import { UserModel } from "@/models/user.model";
+import { useUser } from "@/context/UserContext";
+import { useRouter } from "next/navigation";
+import { Star } from "@/models/star.model";
+import { BeautifierService } from "@/services/beautifier.service";
+import ThemeSwitch from "@/components/atoms/ThemeSwitch";
 
 export default function LoginPage() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [stars, setStars] = useState<Star[]>([]);
 
-  const {login, user} = useUser();
+  const { login, user } = useUser();
   const router = useRouter();
 
-  const beautifierService = new BeautifierService()
+  const beautifierService = new BeautifierService();
 
   useEffect(() => {
     beautifierService.generateStars(setStars);
@@ -32,10 +33,10 @@ export default function LoginPage() {
     console.log("Logowanie:", username, password);
     const userData: UserModel = {
       id: Math.floor(Math.random() * 10000),
-      name: username
-    }
+      name: username,
+    };
     login(userData);
-    router.push("/home")
+    router.push("/home");
   };
 
   return (
@@ -52,6 +53,11 @@ export default function LoginPage() {
         ></div>
       ))}
       <div className="flex flex-row items-center justify-center flex-grow text-white">
+        <div className="h-screen fixed right-0 top-0 bottom-0 web:block hidden">
+          <div className="flex justify-end p-4 mr-8 text-black dark:text-white">
+            <ThemeSwitch />
+          </div>
+        </div>
         <div className="w-0 text-center web:w-2/3 web:mr-24">
           <h1 className="text-8xl font-bold mb-2 hidden web:block">
             <span className="text-black dark:text-white">stay</span>

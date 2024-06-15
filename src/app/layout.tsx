@@ -21,7 +21,11 @@ export default function RootLayout({
     <html lang="pl">
       <body className={inter.className}>
         <Providers>
-          <UserProvider>{children}</UserProvider>
+          <UserProvider>
+            <div className='text-black dark:text-white'>
+              {children}
+            </div>
+          </UserProvider>
         </Providers>
       </body>
     </html>

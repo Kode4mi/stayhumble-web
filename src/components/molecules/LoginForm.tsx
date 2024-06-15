@@ -18,13 +18,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, username, onUsernameChan
           <label htmlFor="username" className="text-black">
             Nazwa użytkownika:
           </label>
-          <input type="text" id="username" className="border rounded p-2 text-black" value={username} onChange={onUsernameChange} />
+          <input type="text" id="username" className="border rounded p-2 text-black bg-white" value={username} onChange={onUsernameChange} />
         </div>
         <div className="flex flex-col">
           <label htmlFor="password" className="text-black">
             Hasło:
           </label>
-          <input type="password" id="password" className="border rounded p-2 text-black" value={password} onChange={onPasswordChange} />
+          <input type="password" id="password" className="border rounded p-2 text-black bg-white" value={password} onChange={onPasswordChange} />
         </div>
         <ColoredButton content="Zaloguj się" onClick={onLogin} backgroundOption="orange" />
         <div className="flex flex-col items-center justify-center">

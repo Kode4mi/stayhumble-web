@@ -22,25 +22,25 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSignIn, email, fullName, user
           <label htmlFor="email" className="text-black">
             E-mail:
           </label>
-          <input type="email" id="email" className="border rounded p-2 text-black" value={email} onChange={onEmailChange} />
+          <input type="email" id="email" className="border rounded p-2 text-black bg-white" value={email} onChange={onEmailChange} />
         </div>
         <div className="flex flex-col">
           <label htmlFor="password" className="text-black">
             Hasło:
           </label>
-          <input type="password" id="password" className="border rounded p-2 text-black" value={password} onChange={onPasswordChange} />
+          <input type="password" id="password" className="border rounded p-2 text-black bg-white" value={password} onChange={onPasswordChange} />
         </div>
         <div className="flex flex-col">
           <label htmlFor="username" className="text-black">
             Nazwa użytkownika:
           </label>
-          <input type="text" id="username" className="border rounded p-2 text-black" value={username} onChange={onUsernameChange} />
+          <input type="text" id="username" className="border rounded p-2 text-black bg-white" value={username} onChange={onUsernameChange} />
         </div>
         <div className="flex flex-col">
           <label htmlFor="name" className="text-black">
             Imię i nazwisko:
           </label>
-          <input type="text" id="name" className="border rounded p-2 text-black mb-4" value={fullName} onChange={onNameChange} />
+          <input type="text" id="name" className="border rounded p-2 text-black mb-4 bg-white" value={fullName} onChange={onNameChange} />
         </div>
           <ColoredButton content="Zarejestruj się" onClick={onSignIn} backgroundOption="orange" />
         <div className="flex flex-col items-center justify-center">

@@ -46,7 +46,7 @@ const UserPage = ({params}: {
 
     return (
         // User page
-        <div className="flex flex-col min-h-screen min-w-[740px]">
+        <div className="flex flex-col min-h-screen">
             {/*Profile bar*/}
             <div className="border-b border-gray-700 pb-4">
                 {/*Profile and background container*/}
