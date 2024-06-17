@@ -11,8 +11,8 @@ const PostContent: React.FC<PostContentProps> = ({ content, imageUrl }) => {
       {content}
     </span>
     {imageUrl ?
-        <div className="max-w-full h-96 overflow-hidden rounded-2xl self-center mt-4">
-          <img src={imageUrl} alt="Post" className="h-full w-auto"/>
+        <div className="max-w-full h-fit overflow-hidden rounded-2xl self-center mt-4">
+          <img src={imageUrl} alt="Post" className="w-full h-fit"/>
         </div>
         : null
     }
