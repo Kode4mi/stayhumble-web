@@ -18,15 +18,16 @@ interface ModalProps {
 }
 
 const CommentModal: React.FC<ModalProps> = ({ show, onClose, authorName, content, likes, dislikes, shares, comments, postTime, userReaction }) => {
+  const {user} = useUser();
+
   if (!show) return null;
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
-  };
 
-    const {user} = useUser();
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 " onClick={handleOverlayClick}>
