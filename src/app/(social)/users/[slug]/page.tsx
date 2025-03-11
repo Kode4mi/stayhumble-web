@@ -2,6 +2,7 @@
 
 import ProfileStat from "@/components/atoms/ProfileStat";
 import FollowButton from "@/components/atoms/FollowButton";
+import Image from "next/image";
 
 const exampleData = [
     {
@@ -42,7 +43,7 @@ const UserPage = ({params}: {
         )
     }
 
-    const posts = exampleData[params.slug].posts.map(() => <div className="w-full h-60 bg-gray-500 rounded-3xl mb-2"></div>)
+    const posts = exampleData[params.slug].posts.map((_, index) => <div key={index} className="w-full h-60 bg-gray-500 rounded-3xl mb-2"></div>)
 
     return (
         // User page
@@ -55,7 +56,7 @@ const UserPage = ({params}: {
                     <div className="w-full h-full overflow-hidden flex justify-center items-center">
                         {
                             exampleData[params.slug].background ?
-                                <img src={exampleData[params.slug].background} alt="background picture"/> :
+                                <Image src={exampleData[params.slug].background} alt="background picture" fill/> :
                                 <h1>{`welcome to ${exampleData[params.slug].name}'s profile`}</h1>
                         }
                     </div>
@@ -63,7 +64,7 @@ const UserPage = ({params}: {
                     <div className="h-40 w-40 border-2 dark:border-black border-white rounded-full dark:bg-gray-900 bg-gray-300 absolute top-1/2 left-4 flex justify-center items-center overflow-hidden">
                         {
                             exampleData[params.slug].profile_picture ?
-                                <img src={exampleData[params.slug].profile_picture} alt="profile picture" className="h-full w-full"/> :
+                                <Image src={exampleData[params.slug].profile_picture} alt="profile picture" fill/> :
                                 <span className="text-7xl">{exampleData[params.slug].name[0].toUpperCase()}</span>
                         }
                     </div>
@@ -93,8 +94,8 @@ const UserPage = ({params}: {
             {
                 posts.length ?
                     <div className="p-2">
-                        {posts.map((post) => (
-                            <div>
+                        {posts.map((post, index) => (
+                            <div key={index}>
                                 {post}
                             </div>
                         ))}

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import LoginForm from "../../../components/molecules/LoginForm";
 import LoginFooter from "@/components/atoms/LoginFooter";
 import {UserModel} from "@/models/user.model";
@@ -20,13 +20,13 @@ export default function LoginPage() {
 
   useEffect(() => {
     beautifierService.generateStars(setStars);
-  }, []);
+  }, [stars]);
 
   useEffect(() => {
     if (user) {
       router.push("/home");
     }
-  }, [user]);
+  }, [user, router]);
 
   const handleLogin = () => {
     console.log("Logowanie:", username, password);

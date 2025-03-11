@@ -1,6 +1,7 @@
 "use client"
 import React from "react";
 import ColoredButton from "@/components/atoms/commons/ColoredButton";
+import Image from "next/image";
 
 export function AddNewPost() {
     const [ selectedImageName, setSelectedImageName ] = React.useState<string>('')
@@ -32,7 +33,7 @@ export function AddNewPost() {
                         <span className="absolute text-8xl leading-[5rem] text-center w-20 bg-opacity-50 bg-black">
                             &times;
                         </span>
-                    <img src={selectedImageURL} alt="selected image" className="w-full h-full object-cover "/>
+                    <Image src={selectedImageURL} alt="selected image" fill style={{objectFit: 'cover'}}/>
                 </div>
             }
             <div className="flex justify-between">

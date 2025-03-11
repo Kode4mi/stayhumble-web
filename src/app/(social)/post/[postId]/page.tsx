@@ -6,6 +6,7 @@ import React from "react";
 import Link from "next/link";
 import PostStats from "@/components/atoms/PostStats";
 import Post from "@/components/molecules/Post";
+import Image from "next/image";
 
 const examplePosts: PostModel[] = [
     {
@@ -91,7 +92,7 @@ export default function PostPage({ params }: { params: { postId: string } }) {
                         <span className="absolute text-8xl leading-[5rem] text-center w-20 bg-opacity-50 bg-black">
                             &times;
                         </span>
-                        <img src={selectedImageURL} alt="selected image" className="w-full h-full object-cover "/>
+                        <Image src={selectedImageURL} alt="selected image" fill style={{objectFit: 'cover'}} />
                     </div>
                 }
             </div>

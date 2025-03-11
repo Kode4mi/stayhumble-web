@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import ColoredButton from "../atoms/commons/ColoredButton";
-import ProfilePicture from "@/components/atoms/ProfilePicture";
 import {ActiveUserProfileLink} from "@/components/molecules/ActiveUserProfileLink";
 
 export default function Navbar() {

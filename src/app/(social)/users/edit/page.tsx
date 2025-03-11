@@ -2,10 +2,9 @@
 
 import ProfilePicture from "@/components/atoms/ProfilePicture";
 import React, { useState} from "react";
+import Image from "next/image";
 import FitImageModal, {ImageProportions} from "@/components/molecules/FitImageModal";
 import {useUser} from "@/context/UserContext";
-import {UserModel} from "@/models/user.model";
-import {log} from "util";
 
 export default function EditUserPage() {
     const {user} = useUser();
@@ -40,7 +39,7 @@ export default function EditUserPage() {
                 <div className="w-full h-full overflow-hidden flex justify-center items-center">
                     {
                         background ?
-                            <img src={background} alt="background picture"/> :
+                            <Image src={background} alt="background picture" fill style={{objectFit: 'cover'}}/> :
                             <h1>{`welcome to ${user.name}'s profile`}</h1>
                     }
                 </div>
@@ -48,7 +47,7 @@ export default function EditUserPage() {
                 <div className="h-40 w-40 border-2 dark:border-black border-white rounded-full dark:bg-gray-900 bg-gray-300 absolute top-1/2 left-4 flex justify-center items-center overflow-hidden">
                     {
                         profilePicture ?
-                            <img src={profilePicture} alt="profile picture" className="h-full w-full"/> :
+                            <Image src={profilePicture} alt="profile picture" fill/> :
                             <span className="text-7xl">{user.name[0].toUpperCase()}</span>
                     }
                 </div>

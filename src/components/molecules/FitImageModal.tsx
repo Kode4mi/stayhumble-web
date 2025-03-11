@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState} from "react";
+import Image from "next/image";
 
 type FitImageModalProps = {
     imageProportions: ImageProportions,
@@ -91,20 +92,15 @@ export default function FitImageModal({imageProportions, handleImageSelection, c
                 <div className="border-2 border-black overflow-hidden relative" id="container" style={{height: `${y * 5}rem`, width: `${x * 5}rem`}}>
                     {
                         selectedImageURL ?
-                            <img src={selectedImageURL}
-                                 alt="Wybierz inny plik"
-                                 id="image"
-                                 onLoad={handleImageLoad}
-                                 style={{
-                                     height: isTooTall ? "100%" : "auto",
-                                     width: isTooWide ? "100%": "auto",
-                                     minHeight: `${imageZoom}%`,
-                                     minWidth: `${imageZoom}%`,
-                                     position: 'absolute',
-                                     top: `${-Number(imageY)}%`,
-                                     left: `${-Number(imageX)}%`,
-                                     maxWidth: "none"
-                                 }}/> :
+                            <Image src={selectedImageURL} alt="Wybierz inny plik" id="image"
+                                   onLoad={handleImageLoad}
+                                   fill
+                                   sizes={`(min-width: ${imageZoom}%) ${isTooWide ? "100%": "auto"} (min-height: ${imageZoom}%) ${isTooTall ? "100%" : "auto"}`}
+                                   style={{
+                                       position: 'absolute',
+                                       top: `${-Number(imageY)}%`,
+                                       left: `${-Number(imageX)}%`,
+                                       maxWidth: "none" }}/> :
                             <h1>{"Wybierz obraz"}</h1>
                     }
                 </div>

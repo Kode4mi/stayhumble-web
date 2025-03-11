@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface PostContentProps {
   content: string;
@@ -12,7 +13,7 @@ const PostContent: React.FC<PostContentProps> = ({ content, imageUrl }) => {
     </span>
     {imageUrl ?
         <div className="max-w-full h-96 overflow-hidden rounded-2xl self-center mt-4">
-          <img src={imageUrl} alt="Post" className="h-full w-auto"/>
+          <Image src={imageUrl} alt="Post" fill style={{objectFit: 'contain'}}/>
         </div>
         : null
     }
