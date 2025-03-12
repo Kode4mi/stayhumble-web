@@ -11,14 +11,13 @@ interface ColoredButtonButtonProps {
 
 /** 
  * ColoredButton Component
- * 
  * @param {Function} onClick - Function to execute on button click.
  * @param {string} content - The content/text to display on the button.
  * @param {string} backgroundOption - The background color of the button. Can be "orange", "red", "blue", "green", "black", "purple", "none", or "white".
  * @param {string} size - The size of the button. Can be "s", "m", "l", "xl", or "custom".
  * @param {string} icon - The icon to display before the content.
  * @param {string} additionalStyles - Additional CSS classes to apply to the button.*/
-const ColoredButton: React.FC<ColoredButtonButtonProps> = ({ onClick, content, backgroundOption, size, icon, additionalStyles  }) => {
+const ColoredButton = ({ onClick, content, backgroundOption, size, icon, additionalStyles  }: ColoredButtonButtonProps) => {
   let color: string, hoverColor: string;
   let paddingX: string;
   let paddingY: string;

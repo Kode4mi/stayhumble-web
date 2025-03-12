@@ -31,10 +31,16 @@ const exampleData = [
     },
 ]
 
-const UserPage = ({params}: {
-    params: { slug: number }
-}) => {
-    if (!(params.slug == 1 || params.slug == 0)) {
+type UserPageProps = {
+		 params: {
+				slug: string
+		}
+}
+
+const UserPage = (props: UserPageProps) => {
+		const slug: number = Number(props.params.slug)
+
+    if (!(slug === 1 || slug === 0 || Number.isNaN(slug))) {
         return (
             // USER_NOT_FOUND message
             <div className="w-full h-full flex-1 flex justify-center items-center">
@@ -43,7 +49,7 @@ const UserPage = ({params}: {
         )
     }
 
-    const posts = exampleData[params.slug].posts.map((_, index) => <div key={index} className="w-full h-60 bg-gray-500 rounded-3xl mb-2"></div>)
+    const posts = exampleData[slug].posts.map((_, index) => <div key={index} className="w-full h-60 bg-gray-500 rounded-3xl mb-2"></div>)
 
     return (
         // User page
@@ -55,17 +61,17 @@ const UserPage = ({params}: {
                     {/*Background picture*/}
                     <div className="w-full h-full overflow-hidden flex justify-center items-center">
                         {
-                            exampleData[params.slug].background ?
-                                <Image src={exampleData[params.slug].background} alt="background picture" fill/> :
-                                <h1>{`welcome to ${exampleData[params.slug].name}'s profile`}</h1>
+                            exampleData[slug].background ?
+                                <Image src={exampleData[slug].background} alt="background picture" fill/> :
+                                <h1>{`welcome to ${exampleData[slug].name}'s profile`}</h1>
                         }
                     </div>
                     {/*Profile picture*/}
                     <div className="h-40 w-40 border-2 dark:border-black border-white rounded-full dark:bg-gray-900 bg-gray-300 absolute top-1/2 left-4 flex justify-center items-center overflow-hidden">
                         {
-                            exampleData[params.slug].profile_picture ?
-                                <Image src={exampleData[params.slug].profile_picture} alt="profile picture" fill/> :
-                                <span className="text-7xl">{exampleData[params.slug].name[0].toUpperCase()}</span>
+                            exampleData[slug].profile_picture ?
+                                <Image src={exampleData[slug].profile_picture} alt="profile picture" fill/> :
+                                <span className="text-7xl">{exampleData[slug].name[0].toUpperCase()}</span>
                         }
                     </div>
                 </div>
@@ -73,19 +79,19 @@ const UserPage = ({params}: {
                 <div className="pl-2 flex">
                     {/*Username, description and stats*/}
                     <div className="flex-1">
-                        <h1 className="font-bold tracking-wider">{exampleData[params.slug].name}</h1>
-                        <p className="text-sm">{exampleData[params.slug].description}</p>
+                        <h1 className="font-bold tracking-wider">{exampleData[slug].name}</h1>
+                        <p className="text-sm">{exampleData[slug].description}</p>
                         <div className="flex mt-1">
-                            <ProfileStat statNumber={exampleData[params.slug].following} statTitle={"obserwujących"}/>
-                            <ProfileStat statNumber={exampleData[params.slug].followed} statTitle={"obserwowanych"}/>
-                            <ProfileStat statNumber={exampleData[params.slug].humble_points} statTitle={"punktów pokory"}/>
+                            <ProfileStat statNumber={exampleData[slug].following} statTitle={"obserwujących"}/>
+                            <ProfileStat statNumber={exampleData[slug].followed} statTitle={"obserwowanych"}/>
+                            <ProfileStat statNumber={exampleData[slug].humble_points} statTitle={"punktów pokory"}/>
                         </div>
                     </div>
                     {/*Action buttons*/}
                     <div className="flex flex-col justify-center items-center">
-                        <FollowButton userId={1} isFollowed={exampleData[params.slug].isFollowed}/>
+                        <FollowButton userId={1} isFollowed={exampleData[slug].isFollowed}/>
                         {
-                            exampleData[params.slug].isFollowing ? <p className="text-xs italic opacity-75">{"Obserwuje cię"}</p> : null
+                            exampleData[slug].isFollowing ? <p className="text-xs italic opacity-75">{"Obserwuje cię"}</p> : null
                         }
                     </div>
                 </div>

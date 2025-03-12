@@ -11,7 +11,7 @@ interface PostStatsProps {
   userReaction?: string | null;
 }
 
-const PostStats: React.FC<PostStatsProps> = ({ likes, dislikes, comments, shares, handleLike, handleDislike, handleComment, userReaction }) => {
+const PostStats = ({ likes, dislikes, comments, shares, handleLike, handleDislike, handleComment, userReaction }: PostStatsProps) => {
   let totalLikes = likes - dislikes;
 
   const shortenNumber = (num: number): string => {

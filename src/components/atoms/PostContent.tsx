@@ -6,7 +6,7 @@ interface PostContentProps {
   imageUrl?: string;
 }
 
-const PostContent: React.FC<PostContentProps> = ({ content, imageUrl }) => {
+const PostContent = ({ content, imageUrl }: PostContentProps) => {
   return <div className="pt-2 py-4 w-full flex flex-col">
     <span>
       {content}

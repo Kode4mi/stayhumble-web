@@ -17,7 +17,7 @@ interface ModalProps {
   userReaction: string | null;
 }
 
-const CommentModal: React.FC<ModalProps> = ({ show, onClose, authorName, content, likes, dislikes, shares, comments, postTime, userReaction }) => {
+const CommentModal = ({ show, onClose, authorName, content, likes, dislikes, shares, comments, postTime, userReaction }: ModalProps) => {
   const {user} = useUser();
 
   if (!show) return null;

@@ -17,9 +17,8 @@ interface PostProps {
   imageUrl?: string;
 }
 
-const Post: React.FC<PostProps> = (props) => {
+const Post = ({ authorName, content, likes, dislikes, shares, comments, postTime, imageUrl }: PostProps) => {
   const { user } = useUser();
-  const { authorName, content, likes, dislikes, shares, comments, postTime, imageUrl } = props;
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [currentLikes, setCurrentLikes] = useState<number>(likes);
   const [currentDislikes, setCurrentDislikes] = useState<number>(dislikes);

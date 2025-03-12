@@ -1,4 +1,9 @@
-export default function ProfileStat({statNumber, statTitle}:{statNumber: number, statTitle: string}) {
+type ProfileStatProps = {
+		statNumber: number;
+		statTitle: string;
+}
+
+export default function ProfileStat({statNumber, statTitle}: ProfileStatProps) {
     return (
         <div className="mr-4 text-sm">
             <span className="font-bold">{statNumber}</span>

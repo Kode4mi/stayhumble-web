@@ -35,7 +35,13 @@ const examplePosts: PostModel[] = [
     }
 ]
 
-export default function PostPage({ params }: { params: { postId: string } }) {
+type PostPageProps = {
+		params: {
+				postId: string
+		}
+}
+
+export default function PostPage({ params }: PostPageProps) {
     const { postId } = params
     const { authorName, content, likes, dislikes, commentCount, shares, time: postTime, replies, imageUrl } = examplePosts[Number(postId)]
 

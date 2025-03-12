@@ -13,7 +13,7 @@ interface SignInFormProps {
   onPasswordChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SignInForm: React.FC<SignInFormProps> = ({ onSignIn, email, fullName, username, password, onEmailChange, onNameChange, onUsernameChange, onPasswordChange }) => {
+const SignInForm = ({ onSignIn, email, fullName, username, password, onEmailChange, onNameChange, onUsernameChange, onPasswordChange }: SignInFormProps) => {
   return (
     <div className="bg-white p-8 rounded-lg shadow-md w-96 mt-2">
       <h1 className="text-3xl font-bold mb-6 text-center text-black">Zarejestruj się</h1>

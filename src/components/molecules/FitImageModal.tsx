@@ -35,7 +35,7 @@ export default function FitImageModal({imageProportions, handleImageSelection, c
         handleImageResize()
         if (Number(imageX) > imageSize.width - 100) setImageX((imageSize.width - 100).toString())
         if (Number(imageY) > imageSize.height - 100) setImageY((imageSize.height - 100).toString())
-    }, [imageZoom])
+		}, [imageZoom, imageSize.height, imageSize.width, imageX, imageY])
 
     useEffect(() => {
         handleImageResize();
