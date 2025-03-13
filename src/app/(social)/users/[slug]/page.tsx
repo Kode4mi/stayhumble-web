@@ -3,6 +3,7 @@
 import ProfileStat from "@/components/atoms/ProfileStat";
 import FollowButton from "@/components/atoms/FollowButton";
 import Image from "next/image";
+import {useParams} from "next/navigation";
 
 const exampleData = [
     {
@@ -31,14 +32,8 @@ const exampleData = [
     },
 ]
 
-type UserPageProps = {
-		 params: {
-				slug: string
-		}
-}
-
-const UserPage = (props: UserPageProps) => {
-		const slug: number = Number(props.params.slug)
+const UserPage = () => {
+		const slug: number = Number(useParams<{slug: string}>().slug)
 
     if (!(slug === 1 || slug === 0 || Number.isNaN(slug))) {
         return (

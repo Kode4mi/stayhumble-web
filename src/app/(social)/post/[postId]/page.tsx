@@ -7,6 +7,8 @@ import Link from "next/link";
 import PostStats from "@/components/atoms/PostStats";
 import Post from "@/components/molecules/Post";
 import Image from "next/image";
+import {cancelImageSelect, handleFileSelect} from "@/utils/FileHandlers";
+import {useParams} from "next/navigation";
 
 const examplePosts: PostModel[] = [
     {
@@ -35,14 +37,8 @@ const examplePosts: PostModel[] = [
     }
 ]
 
-type PostPageProps = {
-		params: {
-				postId: string
-		}
-}
-
-export default function PostPage({ params }: PostPageProps) {
-    const { postId } = params
+export default function PostPage() {
+    const { postId } = useParams<{postId: string}>()
     const { authorName, content, likes, dislikes, commentCount, shares, time: postTime, replies, imageUrl } = examplePosts[Number(postId)]
 
     const [ response, setResponse ] = React.useState<string>('')
@@ -52,19 +48,6 @@ export default function PostPage({ params }: PostPageProps) {
     function handleResponse() {
         console.log(response)
         setResponse('')
-    }
-
-    function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
-        if (e.target.files === null) return;
-
-        setSelectedImageName(e.target.value)
-        const selectedFile = e.target.files[0];
-        setSelectedImageURL(URL.createObjectURL(selectedFile));
-    }
-
-    function cancelImageSelect() {
-        setSelectedImageName('')
-        setSelectedImageURL(undefined)
     }
 
     return <div className="w-full min-h-screen">
@@ -94,7 +77,7 @@ export default function PostPage({ params }: PostPageProps) {
             <div className="flex flex-col w-full">
                 <textarea value={response} onChange={e => setResponse(e.target.value)} placeholder="Napisz odpowiedź..." className="h-full p-4 text-lg bg-transparent outline-0 flex-1 resize-none"/>
                 {selectedImageURL &&
-                    <div className="w-20 h-20 rounded-2xl overflow-hidden relative mx-2 mb-2 cursor-pointer" onClick={cancelImageSelect}>
+                    <div className="w-20 h-20 rounded-2xl overflow-hidden relative mx-2 mb-2 cursor-pointer" onClick={() => cancelImageSelect}>
                         <span className="absolute text-8xl leading-[5rem] text-center w-20 bg-opacity-50 bg-black">
                             &times;
                         </span>
@@ -113,7 +96,7 @@ export default function PostPage({ params }: PostPageProps) {
                         add_photo_alternate
                     </span>
                 </label>
-                <input type="file" id="imageInput" value={selectedImageName} onChange={handleFileSelect} className="hidden"/>
+                <input type="file" id="imageInput" value={selectedImageName} onChange={() => handleFileSelect} className="hidden"/>
             </div>
         </div>
         <div className="w-full space-y-2 p-2">
