@@ -5,6 +5,7 @@ import React, { useState} from "react";
 import Image from "next/image";
 import FitImageModal, {ImageProportions} from "@/components/molecules/FitImageModal";
 import {useUser} from "@/context/UserContext";
+import {log} from "node:util";
 
 export default function EditUserPage() {
     const {user} = useUser();
@@ -48,7 +49,7 @@ export default function EditUserPage() {
                     {
                         profilePicture ?
                             <Image src={profilePicture} alt="profile picture" fill/> :
-                            <span className="text-7xl">{user.name[0].toUpperCase()}</span>
+                            <span className="text-7xl">{user.name ? user.name[0].toUpperCase() : ""}</span>
                     }
                 </div>
                 <button onClick={handleBackgroundSelect} className="absolute right-2 -translate-y-1/2 py-2 px-6 rounded-full bg-orange-500">

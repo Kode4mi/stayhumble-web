@@ -19,7 +19,7 @@ const examplePosts: PostModel[] = [
         commentCount: 2,
         shares: 1,
         time: "1h ago",
-        imageUrl: "https://pbs.twimg.com/media/GP84giCWkAA-5rX?format=jpg&name=medium",
+        imageUrl: "",
         replies: [
             { authorName: "KotKamil", content: "CIAPAKAI", likes: 123, dislikes: 2, shares: 2, commentCount: 2, time: "2024-06-26 09:45" },
             { authorName: "Artur", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie, risus quis rutrum venenatis, massa eros mollis metus, vitae eleifend nunc felis sit amet urna. Nunc faucibus porttitor mi ut hendrerit. Donec eget nulla non velit efficitur efficitur at in risus. Mauris et turpis tempor, consequat eros et, elementum lectus. Fusce consectetur neque eu ipsum lobortis accumsan. Suspendisse potenti. Aenean at elit non mauris finibus dignissim quis eget orci. Morbi placerat, metus vel vehicula eleifend, nunc dolor egestas massa, ut dictum tellus tellus eget metus. Donec dignissim porttitor orci, eget accumsan turpis maximus in. Aenean pellentesque odio quis odio semper pretium. Curabitur libero felis, accumsan id vestibulum hendrerit, gravida eget enim. Vestibulum orci nisi, consequat quis dolor et, faucibus ullamcorper quam. Nam velit neque, accumsan dapibus egestas sit amet, tristique eget metus.", likes: 25555, dislikes: 125, shares: 3, commentCount: 6, time: "2024-06-26 10:05" },
@@ -46,7 +46,6 @@ export default function PostPage() {
     const [ selectedImageURL, setSelectedImageURL ] = React.useState<string | undefined>(undefined)
 
     function handleResponse() {
-        console.log(response)
         setResponse('')
     }
 

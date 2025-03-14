@@ -20,8 +20,8 @@ const exampleData = [
     },
     {
         name: "Wietnamczyk",
-        background: "https://pbs.twimg.com/profile_banners/3092380451/1507906844/1500x500",
-        profile_picture: "https://pbs.twimg.com/profile_images/1699087758231265280/LeLYlUkH_400x400.jpg",
+        background: "",
+        profile_picture: "",
         description: "lubie warzywa",
         posts: [],
         following: 3,

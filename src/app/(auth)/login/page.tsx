@@ -29,7 +29,6 @@ export default function LoginPage() {
   }, [user, router]);
 
   const handleLogin = () => {
-    console.log("Logowanie:", username, password);
     const userData: UserModel = {
       id: Math.floor(Math.random() * 10000),
       name: username
