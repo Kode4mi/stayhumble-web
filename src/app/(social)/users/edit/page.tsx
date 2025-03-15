@@ -5,7 +5,6 @@ import React, { useState} from "react";
 import Image from "next/image";
 import FitImageModal, {ImageProportions} from "@/components/molecules/FitImageModal";
 import {useUser} from "@/context/UserContext";
-import {log} from "node:util";
 
 export default function EditUserPage() {
     const {user} = useUser();
