@@ -1,5 +1,5 @@
 "use client";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import SignInForm from "../../../components/molecules/SignInForm";
 import LoginFooter from "@/components/atoms/LoginFooter";
 import {BeautifierService} from "@/services/beautifier.service";
@@ -13,11 +13,11 @@ export default function LoginPage() {
   const [password, setPassword] = useState<string>("");
   const [stars, setStars] = useState<Star[]>([]);
 
-  const beautifierService = new BeautifierService()
+	const beautifierServiceRef = useRef(new BeautifierService());
 
-  useEffect(() => {
-    beautifierService.generateStars(setStars);
-  }, []);
+	useEffect(() => {
+		beautifierServiceRef.current.generateStars(setStars);
+	}, []);
 
   const handleSignIn = () => {
     console.log("Rejestracja:", email, password, username, fullName);

@@ -32,7 +32,7 @@ export default function SearchPage() {
 
     return <div className="w-full">
         <form className="flex space-x-1 p-2" onSubmit={handleSearch}>
-            <input type="text" placeholder="Szukaj" value={searchInput} onChange={e => setSearchInput(e.target.value)} className="w-full h-12 rounded-full bg-gray-950 px-4 text-lg outline-0"/>
+            <input type="text" placeholder="Szukaj" value={searchInput} onChange={e => setSearchInput(e.target.value)} className="w-full h-12 rounded-full bg-gray-300 dark:bg-gray-950 px-4 text-lg outline-0"/>
             <button className="h-12 w-12 rounded-full bg-transparent hover:text-white hover:bg-orange-500 text-orange-500 border-2 border-orange-500">
                 <span className="material-symbols-outlined leading-12 text-2xl">
                     search
@@ -42,7 +42,7 @@ export default function SearchPage() {
         { isSearching ?
             <div className="w-full h-96 bg-gray-950 rounded-lg mt-4">Search Results</div>
             :
-            <div className="w-full px-4 py-6">
+            <div className="text-black dark:text-white w-full px-4 py-6">
                 <div className="flex w-full justify-between">
                     <h3>Ostatnie wyszukiwania:</h3>
                     <button onClick={clearSearchHistory} className="bg-none font-bold rounded-lg px-2 py-1 hover:bg-gray-900">
@@ -52,7 +52,7 @@ export default function SearchPage() {
                 {
                     searchHistory.map((search, index) => {
                         return <div key={index} className="py-1">
-                            <button onClick={() => quickSearch(search)} className="w-full px-2 py-4 hover:bg-gray-900 flex justify-between items-center">
+                            <button onClick={() => quickSearch(search)} className="w-full px-2 py-4 dark:hover:bg-gray-700 hover:bg-gray-300 flex justify-between items-center">
                                 <span>
                                     {search}
                                 </span>

@@ -17,9 +17,8 @@ interface PostProps {
   imageUrl?: string;
 }
 
-const Post: React.FC<PostProps> = (props) => {
+const Post = ({ authorName, content, likes, dislikes, shares, comments, postTime, imageUrl }: PostProps) => {
   const { user } = useUser();
-  const { authorName, content, likes, dislikes, shares, comments, postTime, imageUrl } = props;
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [currentLikes, setCurrentLikes] = useState<number>(likes);
   const [currentDislikes, setCurrentDislikes] = useState<number>(dislikes);
@@ -64,7 +63,7 @@ const Post: React.FC<PostProps> = (props) => {
   };
 
   return (
-        <div className="bg-white dark:bg-gray-800 pt-4 rounded-lg">
+        <div className="bg-white text-black dark:bg-gray-800 dark:text-white pt-4 rounded-lg">
             <Link href="/post/0" className="flex mx-4">
                 <div>
                     <ProfilePicture userName={authorName} scale={0.8}/>

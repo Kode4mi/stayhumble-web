@@ -1,5 +1,4 @@
 "use client";
-import Header from "@/components/molecules/Header";
 import Post from "@/components/molecules/Post";
 import {PostModel} from "@/models/post.model";
 

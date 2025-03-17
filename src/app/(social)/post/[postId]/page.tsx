@@ -6,6 +6,9 @@ import React from "react";
 import Link from "next/link";
 import PostStats from "@/components/atoms/PostStats";
 import Post from "@/components/molecules/Post";
+import Image from "next/image";
+import {cancelImageSelect, handleImageSelect} from "@/utils/FileHandlers";
+import {useParams} from "next/navigation";
 
 const examplePosts: PostModel[] = [
     {
@@ -16,7 +19,7 @@ const examplePosts: PostModel[] = [
         commentCount: 2,
         shares: 1,
         time: "1h ago",
-        imageUrl: "https://pbs.twimg.com/media/GP84giCWkAA-5rX?format=jpg&name=medium",
+        imageUrl: "",
         replies: [
             { authorName: "KotKamil", content: "CIAPAKAI", likes: 123, dislikes: 2, shares: 2, commentCount: 2, time: "2024-06-26 09:45" },
             { authorName: "Artur", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie, risus quis rutrum venenatis, massa eros mollis metus, vitae eleifend nunc felis sit amet urna. Nunc faucibus porttitor mi ut hendrerit. Donec eget nulla non velit efficitur efficitur at in risus. Mauris et turpis tempor, consequat eros et, elementum lectus. Fusce consectetur neque eu ipsum lobortis accumsan. Suspendisse potenti. Aenean at elit non mauris finibus dignissim quis eget orci. Morbi placerat, metus vel vehicula eleifend, nunc dolor egestas massa, ut dictum tellus tellus eget metus. Donec dignissim porttitor orci, eget accumsan turpis maximus in. Aenean pellentesque odio quis odio semper pretium. Curabitur libero felis, accumsan id vestibulum hendrerit, gravida eget enim. Vestibulum orci nisi, consequat quis dolor et, faucibus ullamcorper quam. Nam velit neque, accumsan dapibus egestas sit amet, tristique eget metus.", likes: 25555, dislikes: 125, shares: 3, commentCount: 6, time: "2024-06-26 10:05" },
@@ -34,8 +37,8 @@ const examplePosts: PostModel[] = [
     }
 ]
 
-export default function PostPage({ params }: { params: { postId: string } }) {
-    const { postId } = params
+export default function PostPage() {
+    const { postId } = useParams<{postId: string}>()
     const { authorName, content, likes, dislikes, commentCount, shares, time: postTime, replies, imageUrl } = examplePosts[Number(postId)]
 
     const [ response, setResponse ] = React.useState<string>('')
@@ -43,21 +46,7 @@ export default function PostPage({ params }: { params: { postId: string } }) {
     const [ selectedImageURL, setSelectedImageURL ] = React.useState<string | undefined>(undefined)
 
     function handleResponse() {
-        console.log(response)
         setResponse('')
-    }
-
-    function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
-        if (e.target.files === null) return;
-
-        setSelectedImageName(e.target.value)
-        const selectedFile = e.target.files[0];
-        setSelectedImageURL(URL.createObjectURL(selectedFile));
-    }
-
-    function cancelImageSelect() {
-        setSelectedImageName('')
-        setSelectedImageURL(undefined)
     }
 
     return <div className="w-full min-h-screen">
@@ -87,11 +76,11 @@ export default function PostPage({ params }: { params: { postId: string } }) {
             <div className="flex flex-col w-full">
                 <textarea value={response} onChange={e => setResponse(e.target.value)} placeholder="Napisz odpowiedź..." className="h-full p-4 text-lg bg-transparent outline-0 flex-1 resize-none"/>
                 {selectedImageURL &&
-                    <div className="w-20 h-20 rounded-2xl overflow-hidden relative mx-2 mb-2 cursor-pointer" onClick={cancelImageSelect}>
+                    <div className="w-20 h-20 rounded-2xl overflow-hidden relative mx-2 mb-2 cursor-pointer" onClick={() => cancelImageSelect(setSelectedImageName, setSelectedImageURL)}>
                         <span className="absolute text-8xl leading-[5rem] text-center w-20 bg-opacity-50 bg-black">
                             &times;
                         </span>
-                        <img src={selectedImageURL} alt="selected image" className="w-full h-full object-cover "/>
+                        <Image src={selectedImageURL} alt="selected image" fill style={{objectFit: 'cover'}} />
                     </div>
                 }
             </div>
@@ -106,7 +95,7 @@ export default function PostPage({ params }: { params: { postId: string } }) {
                         add_photo_alternate
                     </span>
                 </label>
-                <input type="file" id="imageInput" value={selectedImageName} onChange={handleFileSelect} className="hidden"/>
+                <input type="file" id="imageInput" value={selectedImageName} onChange={(e) => handleImageSelect(e, setSelectedImageName, setSelectedImageURL)} className="hidden"/>
             </div>
         </div>
         <div className="w-full space-y-2 p-2">

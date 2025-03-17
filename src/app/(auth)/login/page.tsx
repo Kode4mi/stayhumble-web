@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import {useState, useEffect, useRef} from "react";
 import LoginForm from "../../../components/molecules/LoginForm";
 import LoginFooter from "@/components/atoms/LoginFooter";
 import {UserModel} from "@/models/user.model";
@@ -16,20 +16,19 @@ export default function LoginPage() {
   const {login, user} = useUser();
   const router = useRouter();
 
-  const beautifierService = new BeautifierService()
+	const beautifierServiceRef = useRef(new BeautifierService());
 
-  useEffect(() => {
-    beautifierService.generateStars(setStars);
-  }, []);
+	useEffect(() => {
+		beautifierServiceRef.current.generateStars(setStars);
+	}, []);
 
   useEffect(() => {
     if (user) {
       router.push("/home");
     }
-  }, [user]);
+  }, [user, router]);
 
   const handleLogin = () => {
-    console.log("Logowanie:", username, password);
     const userData: UserModel = {
       id: Math.floor(Math.random() * 10000),
       name: username

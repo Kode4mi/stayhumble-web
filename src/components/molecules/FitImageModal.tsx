@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState} from "react";
+import Image from "next/image";
 
 type FitImageModalProps = {
     imageProportions: ImageProportions,
@@ -24,17 +25,24 @@ export default function FitImageModal({imageProportions, handleImageSelection, c
     const [selectedImageName, setSelectedImageName] = useState<string>("")
     const [selectedImageURL, setSelectedImageURL] = useState<string>("")
     const [imageZoom, setImageZoom] = useState<string>("100")
-    const [imageX, setImageX] = useState<string>("0")
-    const [imageY, setImageY] = useState<string>("0")
+    const [imageX, setImageX] = useState<number>(0)
+    const [imageY, setImageY] = useState<number>(0)
     const [imageSize, setImageSize] = useState<ImageSize>({height: 100, width: 100})
     const [isTooTall, setIsTooTall] = useState<boolean>(false)
     const [isTooWide, setIsTooWide] = useState<boolean>(false)
 
-    useEffect(() => {
-        handleImageResize()
-        if (Number(imageX) > imageSize.width - 100) setImageX((imageSize.width - 100).toString())
-        if (Number(imageY) > imageSize.height - 100) setImageY((imageSize.height - 100).toString())
-    }, [imageZoom])
+	useEffect(() => {
+		handleImageResize();
+
+		if (Number(imageX) > imageSize.width - 100) {
+			const newX = imageSize.width - 100;
+			if (Number(imageX) !== newX) setImageX(newX);
+		}
+		if (Number(imageY) > imageSize.height - 100) {
+			const newY = imageSize.height - 100;
+			if (Number(imageY) !== newY) setImageY(newY);
+		}
+	}, [imageZoom, imageSize.height, imageSize.width, imageX, imageY]);
 
     useEffect(() => {
         handleImageResize();
@@ -91,25 +99,26 @@ export default function FitImageModal({imageProportions, handleImageSelection, c
                 <div className="border-2 border-black overflow-hidden relative" id="container" style={{height: `${y * 5}rem`, width: `${x * 5}rem`}}>
                     {
                         selectedImageURL ?
-                            <img src={selectedImageURL}
-                                 alt="Wybierz inny plik"
-                                 id="image"
-                                 onLoad={handleImageLoad}
-                                 style={{
-                                     height: isTooTall ? "100%" : "auto",
-                                     width: isTooWide ? "100%": "auto",
-                                     minHeight: `${imageZoom}%`,
-                                     minWidth: `${imageZoom}%`,
-                                     position: 'absolute',
-                                     top: `${-Number(imageY)}%`,
-                                     left: `${-Number(imageX)}%`,
-                                     maxWidth: "none"
-                                 }}/> :
+													<Image
+														src={selectedImageURL}
+														id={"image"}
+														alt="Wybierz inny plik"
+														onLoad={handleImageLoad}
+														width={imageSize.width * (Number(imageZoom) / 100)}
+														height={imageSize.height * (Number(imageZoom) / 100)}
+														style={{
+															minWidth: `${imageZoom}%`,
+															minHeight: `${imageZoom}%`,
+															position: 'absolute',
+															top: `${-Number(imageY)}%`,
+															left: `${-Number(imageX)}%`,
+															maxWidth: "none"
+														}}/> :
                             <h1>{"Wybierz obraz"}</h1>
                     }
                 </div>
-                <input type="range" value={imageY} onChange={e => setImageY(e.target.value)} step={0.1} min={0} max={imageSize.height - 100} className="rotate-90 absolute top-1/2 right-5 translate-x-1/2 translate-y-[-350%]" style={{width: `${y * 5}rem`}} />
-                <input type="range" value={imageX} onChange={e => setImageX(e.target.value)} step={0.1} min={0} max={imageSize.width - 100}/>
+                <input type="range" value={imageY} onChange={e => setImageY(Number(e.target.value))} step={0.1} min={0} max={imageSize.height - 100} className="rotate-90 absolute top-1/2 right-5 translate-x-1/2 translate-y-[-350%]" style={{width: `${y * 5}rem`}} />
+                <input type="range" value={imageX} onChange={e => setImageX(Number(e.target.value))} step={0.1} min={0} max={imageSize.width - 100}/>
                 <input type="range" value={imageZoom} onChange={e => setImageZoom(e.target.value)} min={100} max={300}/>
                 <input type="file" value={selectedImageName} onChange={handleFileSelect}/>
                 <div className="flex justify-center mt-4">
