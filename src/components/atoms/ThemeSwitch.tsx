@@ -33,7 +33,7 @@ export default function ThemeSwitch() {
 
   if (resolvedTheme === "light") {
     return (
-      <span className="material-symbols-outlined" onClick={() => setTheme("dark")}>
+      <span className="material-symbols-outlined text-black" onClick={() => setTheme("dark")}>
         dark_mode
       </span>
     );

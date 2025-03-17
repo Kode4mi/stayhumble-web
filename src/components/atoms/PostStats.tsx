@@ -26,7 +26,7 @@ const PostStats = ({ likes, dislikes, comments, shares, handleLike, handleDislik
   const shortShares = shortenNumber(shares);
 
   return (
-    <div className="w-full h-8 leading-8 font-light flex items-center">
+    <div className="text-black dark:text-white w-full h-8 leading-8 font-light flex items-center">
       <div className="flex items-center justify-between web:w-[16%] w-1/4 ">
         <button className="flex items-center" onClick={handleLike}>
           <span className={`material-symbols-outlined text-2xl ${userReaction === "like" ? "text-orange-500" : ""}`}>thumb_up</span>

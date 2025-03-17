@@ -63,7 +63,7 @@ const Post = ({ authorName, content, likes, dislikes, shares, comments, postTime
   };
 
   return (
-        <div className="bg-white dark:bg-gray-800 pt-4 rounded-lg">
+        <div className="bg-white text-black dark:bg-gray-800 dark:text-white pt-4 rounded-lg">
             <Link href="/post/0" className="flex mx-4">
                 <div>
                     <ProfilePicture userName={authorName} scale={0.8}/>

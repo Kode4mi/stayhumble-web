@@ -7,7 +7,7 @@ interface PostContentProps {
 }
 
 const PostContent = ({ content, imageUrl }: PostContentProps) => {
-  return <div className="pt-2 py-4 w-full flex flex-col">
+  return <div className="text-black dark:text-white pt-2 py-4 w-full flex flex-col">
     <span>
       {content}
     </span>

@@ -13,7 +13,7 @@ type ProfilePictureProps = {
 export default function ProfilePicture({imageURL, userName, scale}: ProfilePictureProps) {
     scale = scale ? scale : 1;
     return (
-        <div style={{height: `${scale*2.5}rem`, width: `${scale*2.5}rem`}} className={`border-2 dark:border-black border-white rounded-full dark:bg-gray-900 bg-gray-300 flex justify-center items-center overflow-hidden`}>
+        <div style={{height: `${scale*2.5}rem`, width: `${scale*2.5}rem`}} className={`text-black dark:text-white border-2 dark:border-black border-white rounded-full dark:bg-gray-900 bg-gray-300 flex justify-center items-center overflow-hidden`}>
             {
                 imageURL ?
                     <Image src={imageURL} alt="profile picture" fill/> :
